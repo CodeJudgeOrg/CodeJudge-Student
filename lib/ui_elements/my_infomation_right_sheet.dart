@@ -80,7 +80,7 @@ class MyRightSheet{
       context: context,
       barrierDismissible: true,
       barrierLabel: AppLocalizations.of(context)!.rightSheetDetails, // Details
-      barrierColor: theme.colorScheme.scrim.withOpacity(0.5), // TODO xy
+      barrierColor: theme.colorScheme.scrim.withOpacity(0.5),
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) {
         return child;

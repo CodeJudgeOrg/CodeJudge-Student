@@ -46,7 +46,6 @@ class MyApp extends StatelessWidget {
 
     // Apply the correct theme to the whole app
     return MaterialApp(
-      // TODO Apply the correct theme to the app
       title: 'Orderty',
       theme: lightTheme,
       darkTheme: darkTheme,
