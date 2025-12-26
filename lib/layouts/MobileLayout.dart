@@ -1,5 +1,7 @@
 import 'package:code_juge/main.dart';
-import 'package:code_juge/ui_elements/navigation_bar.dart';
+import 'package:code_juge/ui_elements/my_list_items.dart';
+import 'package:code_juge/ui_elements/my_navigation_bar.dart';
+import 'package:code_juge/ui_elements/my_search_bar.dart';
 import 'package:code_juge/utils/global_variables.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +14,7 @@ class _MobilelayoutState extends State<Mobilelayout> {
   Widget getSelectedPage() {
     switch (selectedIndexInNavigationBar) {
       case 0:
-        // TODO Implement pages
+        return ExercisePage();
       default:
         return Placeholder();
     }
@@ -25,7 +27,7 @@ class _MobilelayoutState extends State<Mobilelayout> {
       selectedIndex: selectedIndexInNavigationBar,
       onItemSelected:(index) {
         // Normal navigation
-        if (index != 3) {
+        if (index != 1) {
           setState(() {
             selectedIndexInNavigationBar = index;
           });
@@ -39,6 +41,44 @@ class _MobilelayoutState extends State<Mobilelayout> {
       },
       body: getSelectedPage(),
       items: getNavigationBarItems(context),
+    );
+  }
+}
+
+// Home Page showing all exercises
+class ExercisePage extends StatelessWidget{
+  // TODO Display the correct exercises
+  List<String> items =  ["tt", "tttt", "ttttttt"];
+
+  ExercisePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          MySearchBar(
+            // TODO Implemtent translation
+            hint: "Search"
+          ),
+          // Display a list of dishes
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.all(8),
+              itemCount: items.length,
+              separatorBuilder: (context, index) => const SizedBox(height: 8),
+              itemBuilder: (context, index) {
+                return MyMobileItem(
+                  // TODO Implement translation
+                  title: items[index],
+                  // TODO Implement OnTap
+                  onTap: (){}
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:code_juge/main.dart';
-import 'package:code_juge/ui_elements/navigation_bar.dart';
+import 'package:code_juge/ui_elements/my_list_items.dart';
+import 'package:code_juge/ui_elements/my_navigation_bar.dart';
+import 'package:code_juge/ui_elements/my_search_bar.dart';
 import 'package:code_juge/utils/global_variables.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +14,7 @@ class _TabletlayoutState extends State<Tabletlayout> {
   Widget getSelectedPage() {
     switch (selectedIndexInNavigationBar) {
       case 0:
-        // TODO Implement pages
+        return ExercisePage();
       default:
         return Placeholder();
     }
@@ -21,7 +23,7 @@ class _TabletlayoutState extends State<Tabletlayout> {
   @override
   Widget build(BuildContext context) {
     return MyNavigationBar(
-      screenType: ScreenType.mobile,
+      screenType: ScreenType.tablet,
       selectedIndex: selectedIndexInNavigationBar,
       onItemSelected:(index) {
         // Normal navigation
@@ -39,6 +41,48 @@ class _TabletlayoutState extends State<Tabletlayout> {
       },
       body: getSelectedPage(),
       items: getNavigationBarItems(context),
+    );
+  }
+}
+
+// Home Page showing all exercises
+class ExercisePage extends StatelessWidget{
+  // TODO Display the correct exercises
+  List<String> items =  ["tt", "tttt", "ttttttt"];
+
+  ExercisePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          MySearchBar(
+            // TODO Implemtent translation
+            hint: "Search"
+          ),
+          // Display a list of dishes
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 3,
+              padding: const EdgeInsets.all(16),
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              children: List.generate(
+                items.length,
+                (index) {
+                  // TODO Implement translation
+                  return MyDesktopAndTabletItem(
+                    title: items[index],
+                    // TODO Implement OnTap
+                    onTap: (){}
+                  );
+                }
+              ),
+            )
+          ),
+        ],
+      ),
     );
   }
 }

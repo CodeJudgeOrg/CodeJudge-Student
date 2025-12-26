@@ -9,7 +9,7 @@ class MyNavigationBar extends StatelessWidget {
   final ValueChanged<int> onItemSelected;
 
   // Labels for the navigation
-  final List<CustomNavigationItemData> items;
+  final List<MyNavigationBarItemData> items;
 
   const MyNavigationBar({
     super.key,
@@ -37,7 +37,7 @@ class MyNavigationBar extends StatelessWidget {
                 children: [
                   // Render all items except the last one
                   for (int i = 0; i < items.length - 1; i++)
-                    CustomNavigationBarItem(
+                    MyNavigationBarItem(
                       icon: items[i].icon,
                       label: items[i].label,
                       selected: selectedIndex == i,
@@ -52,7 +52,7 @@ class MyNavigationBar extends StatelessWidget {
                       height: 1,
                     ),
                   ),
-                  CustomNavigationBarItem(
+                  MyNavigationBarItem(
                     icon: items.last.icon,
                     label: items.last.label,
                     selected: selectedIndex == items.length - 1,
@@ -100,13 +100,13 @@ class MyNavigationBar extends StatelessWidget {
           backgroundColor: theme.colorScheme.surface,
           child: Column(
             children: [
-              const DrawerHeader(child: Text('App')),
+              const DrawerHeader(child: Text('CodeJudge')),
               Expanded(
                 child: Column(
                   children: [
                     // List all items except the last one
                     for (int i = 0; i < items.length - 1; i++)
-                      CustomNavigationBarItem(
+                      MyNavigationBarItem(
                         icon: items[i].icon,
                         label: items[i].label,
                         selected: selectedIndex == i,
@@ -121,7 +121,7 @@ class MyNavigationBar extends StatelessWidget {
                         height: 1,
                       ),
                     ),
-                    CustomNavigationBarItem(
+                    MyNavigationBarItem(
                       icon: items.last.icon,
                       label: items.last.label,
                       selected: selectedIndex == items.length - 1,
@@ -140,24 +140,24 @@ class MyNavigationBar extends StatelessWidget {
 }
 
 // Data per item
-class CustomNavigationItemData {
+class MyNavigationBarItemData {
   final IconData icon;
   final String label;
 
-  const CustomNavigationItemData({
+  const MyNavigationBarItemData({
     required this.icon,
     required this.label,
   });
 }
 
 // Design of an item
-class CustomNavigationBarItem extends StatelessWidget {
+class MyNavigationBarItem extends StatelessWidget {
   final IconData icon;
   final String label;
   final bool selected;
   final VoidCallback onTap;
 
-  const CustomNavigationBarItem({
+  const MyNavigationBarItem({
     super.key,
     required this.icon,
     required this.label,
