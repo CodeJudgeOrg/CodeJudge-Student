@@ -1,4 +1,3 @@
-import 'package:code_juge/main.dart';
 import 'package:code_juge/ui_elements/my_alert_dialog.dart';
 import 'package:code_juge/ui_elements/my_edit_text.dart';
 import 'package:flutter/material.dart';
