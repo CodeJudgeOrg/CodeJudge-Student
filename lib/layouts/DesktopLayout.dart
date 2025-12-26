@@ -1,4 +1,5 @@
 import 'package:code_juge/main.dart';
+import 'package:code_juge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_juge/ui_elements/my_list_items.dart';
 import 'package:code_juge/ui_elements/my_navigation_bar.dart';
 import 'package:code_juge/ui_elements/my_search_bar.dart';
@@ -75,8 +76,10 @@ class ExercisePage extends StatelessWidget{
                   return MyDesktopAndTabletItem(
                     title: items[index],
                     // TODO Implement OnTap
-                    onTap: (){}
-                  );                }
+                    onTap: (){
+                      // Open overlay showing further informations
+                      OpenMyRightSheet.openMyRightSheet(context, "blablabla", 750);
+                    }                  );                }
               ),
             )
           ),
