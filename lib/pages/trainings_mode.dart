@@ -1,3 +1,5 @@
+import 'package:code_juge/main.dart';
+import 'package:code_juge/ui_elements/my_alert_dialog.dart';
 import 'package:code_juge/ui_elements/my_edit_text.dart';
 import 'package:flutter/material.dart';
 
@@ -77,10 +79,13 @@ class TrainingsMode extends StatelessWidget{
                 ),
                 const SizedBox(width: 16),
                 FloatingActionButton.extended(
+                  // TODO Call C backend => Handle output
                   // TODO Implement translation
                   label: Text("Done"),
                   icon: Icon(Icons.done_all),
-                  onPressed: () {},
+                  onPressed: () {
+                    MyAlertDialog().showTrainingSuccessfullDialog(context);
+                  },
                 ),
               ],
             ),
