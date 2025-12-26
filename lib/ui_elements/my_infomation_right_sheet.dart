@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:code_juge/pages/trainings_mode.dart';
 import 'package:flutter/material.dart';
 
 class OpenMyRightSheet {
@@ -51,8 +52,11 @@ class OpenMyRightSheet {
               padding: const EdgeInsets.all(16),
               child: FloatingActionButton.extended(
                 onPressed: () {
-                  // TODO Start training
-                },
+                  // Start the training
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TrainingsMode(workOrder: data)),
+                  );                },
                 icon: Icon(Icons.play_circle),
                 // TODO Implement translation
                 label: Text("Start"),
