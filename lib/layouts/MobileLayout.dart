@@ -1,4 +1,5 @@
 import 'package:code_juge/main.dart';
+import 'package:code_juge/pages/settings_page.dart';
 import 'package:code_juge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_juge/ui_elements/my_list_items.dart';
 import 'package:code_juge/ui_elements/my_navigation_bar.dart';
@@ -32,12 +33,11 @@ class _MobilelayoutState extends State<Mobilelayout> {
           setState(() {
             selectedIndexInNavigationBar = index;
           });
-        // TODO Open settings
         } else {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => SettingsPage()),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SettingsPage()),
+          );
         }
       },
       body: getSelectedPage(),

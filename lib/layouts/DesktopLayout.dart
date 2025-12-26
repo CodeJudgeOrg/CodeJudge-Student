@@ -1,4 +1,5 @@
 import 'package:code_juge/main.dart';
+import 'package:code_juge/pages/settings_page.dart';
 import 'package:code_juge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_juge/ui_elements/my_list_items.dart';
 import 'package:code_juge/ui_elements/my_navigation_bar.dart';
@@ -28,16 +29,15 @@ class _DesktoplayoutState extends State<Desktoplayout> {
       selectedIndex: selectedIndexInNavigationBar,
       onItemSelected:(index) {
         // Normal navigation
-        if (index != 3) {
+        if (index != 1) {
           setState(() {
             selectedIndexInNavigationBar = index;
           });
-        // TODO Open settings
         } else {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => SettingsPage()),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SettingsPage()),
+          );
         }
       },
       body: getSelectedPage(),
@@ -79,7 +79,9 @@ class ExercisePage extends StatelessWidget{
                     onTap: (){
                       // Open overlay showing further informations
                       OpenMyRightSheet.openMyRightSheet(context, "blablabla", 750);
-                    }                  );                }
+                    }
+                  );
+                }
               ),
             )
           ),
