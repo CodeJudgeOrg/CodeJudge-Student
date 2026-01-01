@@ -78,11 +78,6 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
         return "ERROR: Undefined language (Code 1)";
     }
 
-    // TODO Call the compiler and pass the file with the users code
-    // TODO Filter the compilers output
-    //          - Syntax errors: Return message "Syntax errors. Did you select the correct language?"
-    //          - Wrong results: Return message "Wrong results"
-    //          - Correct solution: Return message "Succes!"
     free(fileName);
 }
 
@@ -133,4 +128,38 @@ int callCompiler(char* fileName, char* instruction){
     }
 
     return 0;
+}
+
+// Run a programm and handle the errors
+char* runProgramAndCalculateTheScore(int* crashed) {
+    // Try to start the programm and throw an error if it crashes
+    FILE* pipe = popen("./program", "r");
+    if (!pipe) {
+        *crashed = 1;
+        printf("ERROR: The programm crashed  (Code -3)\n");
+        return "-3";
+    }
+
+    // Receive the output
+    char* result = malloc(2048);
+    result[0] = '\0';
+
+    char buffer[256];
+    while (fgets(buffer, sizeof(buffer), pipe)) {
+        strcat(result, buffer);
+    }
+
+    // Quit the programm and receive the exit code
+    int status = pclose(pipe);
+
+    // Check whether the programm crashed by checking the exit codes
+    if (WIFSIGNALED(status)) {
+        *crashed = 1;
+        free(result);
+        return "-3";
+    }
+
+    // If everything is fine return the correct Output
+    *crashed = 0;
+    return result;
 }
