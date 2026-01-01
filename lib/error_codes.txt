@@ -1,1 +1,9 @@
-- Code 1: See judger.c line 23. The String programmingLanguage is either null or it has a value the if conditions can't handle. 
+- Code 1: See judger.c line 23: The String programmingLanguage is either null or it has a value the if conditions can't handle
+- Code -1: See judger.c line 56-60: The file had a value of NULL
+- Code 2: See judger.c line 84: The compiler exited with an error code
+- Code -2: See judger.c line 81: The compiler isn't installed or it wasn't found
+- Code 3: See judger.c line 81: The function system() is damaged
+- Code -3: See judger.c line 144 and 164: The programm crashed
+
+// TODO Force User to write public class Main if he uses Java
+// TODO Correct this file
