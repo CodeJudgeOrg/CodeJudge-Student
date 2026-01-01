@@ -15,7 +15,7 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
     char* fileName;
 
     // Perform the file generation, compilation depending on the used language
-    if (programmingLanguage == ".c") {
+    if (strcmp(programmingLanguage, ".c") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == "-1"){
@@ -31,7 +31,7 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
         } else if (compilation == 2) {
             return "ERROR: Error while compiling the code (Code 2)";
         }
-    } else if (programmingLanguage == ".java") {
+    } else if (strcmp(programmingLanguage, ".java") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == "-1"){
@@ -47,7 +47,7 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
         } else if (compilation == 2) {
             return "ERROR: Error while compiling the code (Code 2)";
         }
-    } else if (programmingLanguage == ".py") {
+    } else if (strcmp(programmingLanguage, ".py") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == "-1"){
@@ -63,7 +63,7 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
         } else if (interpretation == 2) {
             return "ERROR: Error while compiling the code (Code 2)";
         }
-    } else if (programmingLanguage == ".cpp") {
+    } else if (strcmp(programmingLanguage, ".cpp") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == "-1"){
