@@ -58,7 +58,7 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
         }
 
         // Call the compiler for the correct language and check for errors
-        int compilation = callCompiler(fileName, "go build -o UserProgramm %s");
+        int compilation = callCompiler(fileName, "GO111MODULE=off go build -o UserProgramm %s");
         if (compilation == SYSTEM_ERROR) {
             free(fileName);
             return "ERROR: Calling system() didn't work (Code 3)";
@@ -118,7 +118,7 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
 
         // Run and correct the programm
         result = runProgramAndCalculateTheScore(solution, "./UserProgramm");
-    } else if (strcmp(programmingLanguage, ".cs") == 0) {
+    }  else if (strcmp(programmingLanguage, ".rs") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
@@ -127,7 +127,7 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
         }
 
         // Call the compiler for the correct language and check for errors
-        int compilation = callCompiler(fileName, "csc UserCode.cs");
+        int compilation = callCompiler(fileName, "rustc %s -o UserProgramm");
         if (compilation == SYSTEM_ERROR) {
             free(fileName);
             return "ERROR: Calling system() didn't work (Code 3)";
@@ -140,7 +140,76 @@ char* run_judge(const char* usersCode, const char* programmingLanguage, const ch
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "dotnet script UserCode.cs");
+        result = runProgramAndCalculateTheScore(solution, "./UserProgramm");
+    }  else if (strcmp(programmingLanguage, ".rb") == 0) {
+        // Write the users code into a file with the correct ending of the language he used
+        fileName = writeFile(usersCode, programmingLanguage);
+        if (fileName == FILE_ERROR){
+            free(fileName);
+            return "ERROR: Unable to generate the file (Code -1)";
+        }
+
+        // Call the compiler for the correct language and check for errors
+        int compilation = callCompiler(fileName, "ruby -c %s");
+        if (compilation == SYSTEM_ERROR) {
+            free(fileName);
+            return "ERROR: Calling system() didn't work (Code 3)";
+        } else if (compilation == MISSING_COMPILER_ERROR) {
+            free(fileName);
+            return "ERROR: No compiler found (Code -2)";
+        } else if (compilation == COMPILATION_ERROR) {
+            free(fileName);
+            return "ERROR: Error while compiling the code (Code 2)";
+        }
+
+        // Run and correct the programm
+        result = runProgramAndCalculateTheScore(solution, "ruby UserCode.rb");
+    }   else if (strcmp(programmingLanguage, ".js") == 0) {
+        // Write the users code into a file with the correct ending of the language he used
+        fileName = writeFile(usersCode, programmingLanguage);
+        if (fileName == FILE_ERROR){
+            free(fileName);
+            return "ERROR: Unable to generate the file (Code -1)";
+        }
+
+        // Call the compiler for the correct language and check for errors
+        int check = callCompiler(fileName, "node --check %s");
+        if (check == SYSTEM_ERROR) {
+            free(fileName);
+            return "ERROR: Calling system() didn't work (Code 3)";
+        } else if (check == MISSING_COMPILER_ERROR) {
+            free(fileName);
+            return "ERROR: No compiler found (Code -2)";
+        } else if (check == COMPILATION_ERROR) {
+            free(fileName);
+            return "ERROR: Error while compiling the code (Code 2)";
+        }
+
+        // Run and correct the programm
+        result = runProgramAndCalculateTheScore(solution, "node UserCode.js");
+    }  else if (strcmp(programmingLanguage, ".php") == 0) {
+        // Write the users code into a file with the correct ending of the language he used
+        fileName = writeFile(usersCode, programmingLanguage);
+        if (fileName == FILE_ERROR){
+            free(fileName);
+            return "ERROR: Unable to generate the file (Code -1)";
+        }
+
+        // Call the compiler for the correct language and check for errors
+        int compilation = callCompiler(fileName, "php -l %s");
+        if (compilation == SYSTEM_ERROR) {
+            free(fileName);
+            return "ERROR: Calling system() didn't work (Code 3)";
+        } else if (compilation == MISSING_COMPILER_ERROR) {
+            free(fileName);
+            return "ERROR: No compiler found (Code -2)";
+        } else if (compilation == COMPILATION_ERROR) {
+            free(fileName);
+            return "ERROR: Error while compiling the code (Code 2)";
+        }
+
+        // Run and correct the programm
+        result = runProgramAndCalculateTheScore(solution, "php UserCode.php");
     } else {
         printf("ERROR: Undefined language (Code 1)\n");
         free(fileName);
