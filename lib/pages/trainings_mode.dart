@@ -60,74 +60,79 @@ class TrainingsMode extends StatelessWidget{
           ),
           // Container is pinned to the bottom of the window
           Divider(thickness: 1, height: 1),
-          Container(
-            padding: const EdgeInsets.all(12),
-            color: theme.colorScheme.surfaceContainerHigh,
-            child: Row(
-              children: [
-                const Text("ERROR: xyz"),
-                const Spacer(),
-
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 120,
-                      child: ProgrammingLanguageSelector(programmingLanguage: programmingLanguage),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 16),
-                FloatingActionButton.extended(
-                  // TODO Call C backend => Handle output
-                  // TODO Implement translation
-                  label: Text(appLocalizations.done), // Done
-                  icon: Icon(Icons.done_all),
-                  onPressed: () {
-                    MyAlertDialog().showTrainingSuccessfullDialog(context);
-                  },
-                ),
-              ],
-            ),
-          ),
+          BottomContainer(
+            programmingLanguage: programmingLanguage,
+            buttonLabel: appLocalizations.done, // Done
+          )
         ],
       )
     );
   }
 }
 
-// Selector for switching between the available programming languages
-class ProgrammingLanguageSelector extends StatefulWidget{
+class BottomContainer extends StatefulWidget{
+  String buttonLabel;
   int programmingLanguage;
 
-  ProgrammingLanguageSelector({
-    required this.programmingLanguage
+  BottomContainer({
+    required this.programmingLanguage,
+    this.buttonLabel = "Done",
   });
 
   @override
-  State<ProgrammingLanguageSelector> createState() => _ProgrammingLanguageSelectorState();
+  State<BottomContainer> createState() => _BottomContainerState();
 }
-class _ProgrammingLanguageSelectorState extends State<ProgrammingLanguageSelector> {
+
+class _BottomContainerState extends State<BottomContainer> {
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonHideUnderline(
-      child: DropdownButton(
-        value: widget.programmingLanguage,
-        items: const [
-          DropdownMenuItem(value: 0, child: Text("C")),
-          DropdownMenuItem(value: 1, child: Text("Python")),
-          DropdownMenuItem(value: 2, child: Text("Go")),
-          DropdownMenuItem(value: 3, child: Text("C++")),
-          DropdownMenuItem(value: 3, child: Text("Rust")),
-          DropdownMenuItem(value: 3, child: Text("Ruby")),
-          DropdownMenuItem(value: 3, child: Text("JavaScript")),
-          DropdownMenuItem(value: 3, child: Text("PHP")),
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.all(12),
+      color: theme.colorScheme.surfaceContainerHigh,
+      child: Row(
+        children: [
+          const Text("ERROR: xyz"),
+          const Spacer(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 120,
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton(
+                    value: widget.programmingLanguage,
+                    items: const [
+                      DropdownMenuItem(value: 0, child: Text("C")),
+                      DropdownMenuItem(value: 1, child: Text("Python")),
+                      DropdownMenuItem(value: 2, child: Text("Go")),
+                      DropdownMenuItem(value: 3, child: Text("C++")),
+                      DropdownMenuItem(value: 3, child: Text("Rust")),
+                      DropdownMenuItem(value: 3, child: Text("Ruby")),
+                      DropdownMenuItem(value: 3, child: Text("JavaScript")),
+                      DropdownMenuItem(value: 3, child: Text("PHP")),
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        widget.programmingLanguage = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(width: 16),
+          FloatingActionButton.extended(
+            // TODO Call C backend => Handle output
+            // TODO Implement translation
+            label: Text(widget.buttonLabel), // Done
+            icon: Icon(Icons.done_all),
+            onPressed: () {
+              MyAlertDialog().showTrainingSuccessfullDialog(context);
+            },
+          ),
         ],
-        onChanged: (value) {
-          setState(() {
-            widget.programmingLanguage = value!;
-          });
-        },
       ),
     );
   }
