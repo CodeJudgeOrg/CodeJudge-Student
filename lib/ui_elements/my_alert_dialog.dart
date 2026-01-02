@@ -11,8 +11,17 @@ class MyAlertDialog {
       builder: (context) {
         return AlertDialog(
           title: Text(appLocalizations.alertSuccess), // Congratulations!
-          // TODO Display result with translation! => Simplify Backend and translate it right here depending on the score
-          content: Text("Your Score..."),
+          // Display results with translation!
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Display a small explanatory note
+              Text(receiveTranslatedMessage(score, appLocalizations)),
+              const SizedBox(height: 4),
+              Text(appLocalizations.alertScore + score.toString()), // Your score: xy
+            ],
+          ),
           actions: [
             TextButton(
               child: Text(appLocalizations.alertClose), // Close
@@ -30,4 +39,22 @@ class MyAlertDialog {
       },
     );
   }
+
+  // Receive the message depending on the score
+  String receiveTranslatedMessage(int score, AppLocalizations appLocalizations){
+    if (score == 0) {
+      return appLocalizations.result0; // The programm crashed without an output
+    } else if (score == 25){
+      return appLocalizations.result25; // The programm returned a wrong output & crashed then
+    } else if (score == 50){
+      return appLocalizations.result50; // The programm returned the correct output & crashed afterwards
+    } else if (score == 75){
+      return appLocalizations.result75; // The programm ran successfully, but the output was wrong
+    } else if (score == 100){
+      return appLocalizations.result100; // The programm ran successfulle & the output was correct as well!
+    } else {
+      return "ERROR: Unkown score";
+    }
+  }
+
 }
