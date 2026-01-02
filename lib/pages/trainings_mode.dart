@@ -16,7 +16,7 @@ class TrainingsMode extends StatefulWidget{
 
 class _TrainingsModeState extends State<TrainingsMode> {
   late TextEditingController enterCodeController;
-  int programmingLanguage = 0;
+  String programmingLanguage = ".c";
 
   @override
   void initState() {
@@ -94,7 +94,7 @@ class _TrainingsModeState extends State<TrainingsMode> {
 
 class BottomContainer extends StatefulWidget{
   String buttonLabel;
-  int programmingLanguage;
+  String programmingLanguage;
   TextEditingController controller;
 
   BottomContainer({
@@ -130,14 +130,14 @@ class _BottomContainerState extends State<BottomContainer> {
                   child: DropdownButton(
                     value: widget.programmingLanguage,
                     items: const [
-                      DropdownMenuItem(value: 0, child: Text("C")),
-                      DropdownMenuItem(value: 1, child: Text("Python")),
-                      DropdownMenuItem(value: 2, child: Text("Go")),
-                      DropdownMenuItem(value: 3, child: Text("C++")),
-                      DropdownMenuItem(value: 3, child: Text("Rust")),
-                      DropdownMenuItem(value: 3, child: Text("Ruby")),
-                      DropdownMenuItem(value: 3, child: Text("JavaScript")),
-                      DropdownMenuItem(value: 3, child: Text("PHP")),
+                      DropdownMenuItem(value: ".c", child: Text("C")),
+                      DropdownMenuItem(value: ".go", child: Text("Go")),
+                      DropdownMenuItem(value: ".py", child: Text("Python")),
+                      DropdownMenuItem(value: ".cpp", child: Text("C++")),
+                      DropdownMenuItem(value: ".rs", child: Text("Rust")),
+                      DropdownMenuItem(value: ".rb", child: Text("Ruby")),
+                      DropdownMenuItem(value: ".js", child: Text("JavaScript")),
+                      DropdownMenuItem(value: ".php", child: Text("PHP")),
                     ],
                     onChanged: (value) {
                       setState(() {
@@ -157,7 +157,7 @@ class _BottomContainerState extends State<BottomContainer> {
               String userCode = widget.controller.text;
               // Call library if available
               setState(() {
-                textBoxMessage = judgerLib.callJudger(userCode, ".c", "42",);
+                textBoxMessage = judgerLib.callJudger(userCode, widget.programmingLanguage, "42",);
               });
               //MyAlertDialog().showTrainingSuccessfullDialog(context, 100);
             },
