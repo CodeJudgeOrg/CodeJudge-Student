@@ -5,7 +5,9 @@ import 'package:code_juge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_juge/ui_elements/my_list_items.dart';
 import 'package:code_juge/ui_elements/my_navigation_bar.dart';
 import 'package:code_juge/ui_elements/my_search_bar.dart';
+import 'package:code_juge/utils/exercise_datamodell.dart';
 import 'package:code_juge/utils/global_variables.dart';
+import 'package:code_juge/utils/my_exercises.dart';
 import 'package:flutter/material.dart';
 
 class Mobilelayout extends StatefulWidget{
@@ -49,8 +51,8 @@ class _MobilelayoutState extends State<Mobilelayout> {
 
 // Home Page showing all exercises
 class ExercisePage extends StatelessWidget{
-  // TODO Display the correct exercises
-  List<String> items =  ["tt", "tttt", "ttttttt"];
+  // Display the correct exercises
+  List<ExerciseDatamodell> items = MyExercises().getAllExercises();
 
   ExercisePage({super.key});
 
@@ -72,10 +74,10 @@ class ExercisePage extends StatelessWidget{
               separatorBuilder: (context, index) => const SizedBox(height: 8),
               itemBuilder: (context, index) {
                 return MyMobileItem(
-                  title: items[index],
+                  title: items[index].name,
                   onTap: (){
-                    // Open overlay showing further informations
-                    OpenMyRightSheet.openMyRightSheet(context, "blablabla", 300);
+                    // Open an overlay showing further informations
+                    OpenMyRightSheet.openMyRightSheet(context, items[index].description, items[index].task, items[index].solution, 300);
                   }
                 );
               },
