@@ -62,11 +62,13 @@ class _TrainingsModeState extends State<TrainingsMode> {
                     ),
                     child: Row(
                       children: [
-                        Text(
-                          widget.task, // The task
-                          softWrap: true,
+                        Expanded(
+                          child: Text(
+                            widget.task, // The task
+                            softWrap: true,
+                          ),
                         ),
-                        const Spacer(),
+                        const SizedBox(width: 16),
                         FloatingActionButton.small(
                           child: Icon(Icons.lightbulb_outline),
                           onPressed: (){
