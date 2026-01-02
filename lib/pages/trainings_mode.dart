@@ -1,12 +1,9 @@
 import 'package:code_juge/l10n/app_localizations.dart';
 import 'package:code_juge/main.dart';
-import 'package:code_juge/ui_elements/my_alert_dialog.dart';
 import 'package:code_juge/ui_elements/my_edit_text.dart';
-import 'package:code_juge/utils/judger_bindings.dart';
-import 'package:code_juge/utils/judger_loader.dart';
 import 'package:flutter/material.dart';
 
-class TrainingsMode extends StatelessWidget{
+class TrainingsMode extends StatefulWidget{
   String workOrder;
   
   TrainingsMode({
@@ -14,10 +11,24 @@ class TrainingsMode extends StatelessWidget{
   });
 
   @override
+  State<TrainingsMode> createState() => _TrainingsModeState();
+}
+
+class _TrainingsModeState extends State<TrainingsMode> {
+  late TextEditingController enterCodeController;
+  int programmingLanguage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Set the controller
+    enterCodeController = TextEditingController();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    int programmingLanguage = 0;
 
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +55,7 @@ class TrainingsMode extends StatelessWidget{
                       ),
                     ),
                     child: Text(
-                      workOrder,
+                      widget.workOrder,
                       softWrap: true,
                     ),
                   ),
@@ -53,7 +64,7 @@ class TrainingsMode extends StatelessWidget{
 
                   MyEditText(
                     hint: appLocalizations.enterCodeHint, // Enter your code...
-                    onInputDone: (value) {},
+                    controller: enterCodeController,
                   ),
 
                   const SizedBox(height: 80),
@@ -65,20 +76,30 @@ class TrainingsMode extends StatelessWidget{
           Divider(thickness: 1, height: 1),
           BottomContainer(
             programmingLanguage: programmingLanguage,
+            controller: enterCodeController,
             buttonLabel: appLocalizations.done, // Done
           )
         ],
       )
     );
   }
+
+  @override
+  void dispose() {
+    // Close the controller as well
+    enterCodeController.dispose();
+    super.dispose();
+  }
 }
 
 class BottomContainer extends StatefulWidget{
   String buttonLabel;
   int programmingLanguage;
+  TextEditingController controller;
 
   BottomContainer({
     required this.programmingLanguage,
+    required this.controller,
     this.buttonLabel = "Done",
   });
 
@@ -133,9 +154,10 @@ class _BottomContainerState extends State<BottomContainer> {
             label: Text(widget.buttonLabel), // Done
             icon: Icon(Icons.done_all),
             onPressed: () {
+              String userCode = widget.controller.text;
               // Call library if available
               setState(() {
-                textBoxMessage = judgerLib.callJudger( "print('hi')", ".unknown", "hi", );
+                textBoxMessage = judgerLib.callJudger(userCode, ".c", "42",);
               });
               //MyAlertDialog().showTrainingSuccessfullDialog(context, 100);
             },
