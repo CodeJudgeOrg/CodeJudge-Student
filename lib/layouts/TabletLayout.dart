@@ -78,6 +78,7 @@ class ExercisePage extends StatelessWidget{
                 (index) {
                   return MyDesktopAndTabletItem(
                     title: items[index].name,
+                    note: appLocalizations.noteDifficultyLevel + items[index].difficultyLevel.toString(),
                     onTap: (){
                       // Open an overlay showing further informations
                       OpenMyRightSheet.openMyRightSheet(context, items[index].description, items[index].task, items[index].hint, items[index].solution, 400);
