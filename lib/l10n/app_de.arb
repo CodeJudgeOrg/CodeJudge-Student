@@ -9,8 +9,15 @@
   "done": "Fertig",
   "alertSuccess": "Glückwunsch!",
   "alertClose": "Schließen",
+  "alertScore": "Deine Punkte: ",
   "rightSheetStart": "Loslegen",
   "rightSheetDetails": "Details",
+
+  "result0": "Das Programm ist ohne Output abgestürzt",
+  "result25": "Das Programm hat einen falschen Output geliefert & ist anschließend abgestürzt",
+  "result50": "Das Programm hat den richtigen Output geliefert & ist dann abgestürzt",
+  "result75": "Das Programm lief erfolgreich, aber der Output ist falsch",
+  "result100": "Das Programm lief erfolgreich & lieferte den korrekten Output!",
 
   "settings": "Einstellungen",
   "themeMode": "Modus des Themas:",

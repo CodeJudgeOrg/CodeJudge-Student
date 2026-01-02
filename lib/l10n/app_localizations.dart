@@ -137,6 +137,12 @@ abstract class AppLocalizations {
   /// **'Close'**
   String get alertClose;
 
+  /// No description provided for @alertScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Your score: '**
+  String get alertScore;
+
   /// No description provided for @rightSheetStart.
   ///
   /// In en, this message translates to:
@@ -148,6 +154,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Details'**
   String get rightSheetDetails;
+
+  /// No description provided for @result0.
+  ///
+  /// In en, this message translates to:
+  /// **'The programm crashed without an output'**
+  String get result0;
+
+  /// No description provided for @result25.
+  ///
+  /// In en, this message translates to:
+  /// **'The programm returned a wrong output & crashed then'**
+  String get result25;
+
+  /// No description provided for @result50.
+  ///
+  /// In en, this message translates to:
+  /// **'The programm returned the correct output & crashed afterwards'**
+  String get result50;
+
+  /// No description provided for @result75.
+  ///
+  /// In en, this message translates to:
+  /// **'The programm ran successfully, but the output was wrong'**
+  String get result75;
+
+  /// No description provided for @result100.
+  ///
+  /// In en, this message translates to:
+  /// **'The programm ran successfulle & the output was correct as well!'**
+  String get result100;
 
   /// No description provided for @settings.
   ///

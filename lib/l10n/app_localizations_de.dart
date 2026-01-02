@@ -30,10 +30,28 @@ class AppLocalizationsDe extends AppLocalizations {
   String get alertClose => 'Schließen';
 
   @override
+  String get alertScore => 'Deine Punkte: ';
+
+  @override
   String get rightSheetStart => 'Loslegen';
 
   @override
   String get rightSheetDetails => 'Details';
+
+  @override
+  String get result0 => 'Das Programm ist ohne Output abgestürzt';
+
+  @override
+  String get result25 => 'Das Programm hat einen falschen Output geliefert & ist anschließend abgestürzt';
+
+  @override
+  String get result50 => 'Das Programm hat den richtigen Output geliefert & ist dann abgestürzt';
+
+  @override
+  String get result75 => 'Das Programm lief erfolgreich, aber der Output ist falsch';
+
+  @override
+  String get result100 => 'Das Programm lief erfolgreich & lieferte den korrekten Output!';
 
   @override
   String get settings => 'Einstellungen';

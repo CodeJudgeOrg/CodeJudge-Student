@@ -9,8 +9,15 @@
   "done": "Done",
   "alertSuccess": "Congratulations!",
   "alertClose": "Close",
+  "alertScore": "Your score: ",
   "rightSheetStart": "Start",
   "rightSheetDetails": "Details",
+
+  "result0": "The programm crashed without an output",
+  "result25": "The programm returned a wrong output & crashed then",
+  "result50": "The programm returned the correct output & crashed afterwards",
+  "result75": "The programm ran successfully, but the output was wrong",
+  "result100": "The programm ran successfulle & the output was correct as well!",
 
   "settings": "Settings",
   "themeMode": "Theme Mode:",

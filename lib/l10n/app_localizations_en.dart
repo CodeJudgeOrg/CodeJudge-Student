@@ -30,10 +30,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get alertClose => 'Close';
 
   @override
+  String get alertScore => 'Your score: ';
+
+  @override
   String get rightSheetStart => 'Start';
 
   @override
   String get rightSheetDetails => 'Details';
+
+  @override
+  String get result0 => 'The programm crashed without an output';
+
+  @override
+  String get result25 => 'The programm returned a wrong output & crashed then';
+
+  @override
+  String get result50 => 'The programm returned the correct output & crashed afterwards';
+
+  @override
+  String get result75 => 'The programm ran successfully, but the output was wrong';
+
+  @override
+  String get result100 => 'The programm ran successfulle & the output was correct as well!';
 
   @override
   String get settings => 'Settings';
