@@ -5,11 +5,13 @@ class MyDesktopAndTabletItem extends StatelessWidget{
   final title;
   final VoidCallback onTap;
   final VoidCallback? onLongPress;
+  String note;
 
   MyDesktopAndTabletItem({
     required this.title,
     required this.onTap,
     this.onLongPress,
+    this.note = "",
   });
 
   @override
@@ -33,7 +35,18 @@ class MyDesktopAndTabletItem extends StatelessWidget{
               Center(
                 child: Text(
                   title,
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Text(
+                  note,
+                  style: TextStyle(fontSize: 12),
                 ),
               ),
             ],
@@ -48,11 +61,13 @@ class MyMobileItem extends StatelessWidget {
   final title;
   final VoidCallback onTap;
   final VoidCallback? onLongPress;
+  final String note;
 
   MyMobileItem({
     required this.title,
     required this.onTap,
     this.onLongPress,
+    this.note = "",
   });
 
   @override
@@ -77,7 +92,18 @@ class MyMobileItem extends StatelessWidget {
                   alignment: AlignmentGeometry.centerLeft,
                   child: Text(
                     title,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Text(
+                    note,
+                    style: TextStyle(fontSize: 12),
                   ),
                 ),
               ],
