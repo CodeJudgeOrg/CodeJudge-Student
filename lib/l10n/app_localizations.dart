@@ -101,12 +101,6 @@ abstract class AppLocalizations {
   /// **'Exercises'**
   String get exercises;
 
-  /// No description provided for @searchHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Search'**
-  String get searchHint;
-
   /// No description provided for @noteDifficultyLevel.
   ///
   /// In en, this message translates to:

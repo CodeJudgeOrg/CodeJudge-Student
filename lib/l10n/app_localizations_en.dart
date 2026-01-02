@@ -12,9 +12,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exercises => 'Exercises';
 
   @override
-  String get searchHint => 'Search';
-
-  @override
   String get noteDifficultyLevel => 'Level of difficulty: ';
 
   @override
