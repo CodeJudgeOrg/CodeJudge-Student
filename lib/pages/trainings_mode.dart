@@ -5,10 +5,12 @@ import 'package:code_juge/ui_elements/my_edit_text.dart';
 import 'package:flutter/material.dart';
 
 class TrainingsMode extends StatefulWidget{
-  String workOrder;
+  String task;
+  String solution;
   
   TrainingsMode({
-    required this.workOrder
+    required this.task,
+    required this.solution,
   });
 
   @override
@@ -57,7 +59,7 @@ class _TrainingsModeState extends State<TrainingsMode> {
                       ),
                     ),
                     child: Text(
-                      widget.workOrder,
+                      widget.task,
                       softWrap: true,
                     ),
                   ),
@@ -118,7 +120,7 @@ class _TrainingsModeState extends State<TrainingsMode> {
                   onPressed: () {
                     String userCode = enterCodeController.text;
                     // Call library and check it's result
-                    String resultByJudger = judgerLib.callJudger(userCode, programmingLanguage, "42");
+                    String resultByJudger = judgerLib.callJudger(userCode, programmingLanguage, widget.solution);
 
                     // If the result is an error message display it in the lower left Text()
                     if (resultByJudger.startsWith("ERROR:")) {
