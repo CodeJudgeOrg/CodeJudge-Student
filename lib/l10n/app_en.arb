@@ -11,7 +11,7 @@
   "alertClose": "Close",
   "alertScore": "Your score: ",
   "rightSheetStart": "Start",
-  "rightSheetDetails": "Details",
+  "rightSheetDetails": "Details about ",
   "dialogHint": "Hint",
 
   "result0": "The programm crashed without an output",

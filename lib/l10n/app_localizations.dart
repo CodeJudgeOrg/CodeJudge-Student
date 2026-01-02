@@ -152,7 +152,7 @@ abstract class AppLocalizations {
   /// No description provided for @rightSheetDetails.
   ///
   /// In en, this message translates to:
-  /// **'Details'**
+  /// **'Details about '**
   String get rightSheetDetails;
 
   /// No description provided for @dialogHint.

@@ -36,7 +36,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rightSheetStart => 'Start';
 
   @override
-  String get rightSheetDetails => 'Details';
+  String get rightSheetDetails => 'Details about ';
 
   @override
   String get dialogHint => 'Hint';
