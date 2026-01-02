@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class OpenMyRightSheet {
   // Open the RightSheet and fill it with the correct content
-  static void openMyRightSheet(BuildContext context, String description, String task, String hint, String solution, double width){
+  static void openMyRightSheet(BuildContext context, String exerciseName, String description, String task, String hint, String solution, double width){
     final appLocalizations = AppLocalizations.of(context)!;
 
     MyRightSheet().showRightSheet(
@@ -34,7 +34,7 @@ class OpenMyRightSheet {
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.all(16),
-                              child: Text(appLocalizations.rightSheetDetails), // Details
+                              child: Text(appLocalizations.rightSheetDetails + exerciseName), // Details
                             ),
                           ),
                         ],
