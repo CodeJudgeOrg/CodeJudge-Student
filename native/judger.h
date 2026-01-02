@@ -9,7 +9,7 @@ extern "C" {
 char* runJudge(const char* usersCode, const char* programmingLanguage, const char* solution);
 
 // Internal helper functions
-char* writeFile(char* content, char* ending);
+char* writeFile(const char* content, const char* ending);
 int callCompiler(char* fileName, char* instruction);
 char* runProgramAndCalculateTheScore(char* correctSolution, char* instruction);
 void trimNewline(char* s);

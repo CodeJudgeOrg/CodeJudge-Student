@@ -16,7 +16,7 @@
 
 // If called this function receives 3 String and it returns one as soon as it's done
 char* runJudge(const char* usersCode, const char* programmingLanguage, const char* solution) {
-    char* fileName;
+    char* fileName = NULL;
     char* result;
 
     // Perform the file generation, compilation depending on the used language
@@ -24,7 +24,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
-            free(fileName);
+            //free(fileName);
             return "ERROR: Unable to generate the file (Code -1)";
         }
 
@@ -47,7 +47,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
-            free(fileName);
+            //free(fileName);
             return "ERROR: Unable to generate the file (Code -1)";
         }
 
@@ -70,7 +70,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
-            free(fileName);
+            //free(fileName);
             return "ERROR: Unable to generate the file (Code -1)";
         }
 
@@ -93,7 +93,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
-            free(fileName);
+            //free(fileName);
             return "ERROR: Unable to generate the file (Code -1)";
         }
 
@@ -116,7 +116,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
-            free(fileName);
+            //free(fileName);
             return "ERROR: Unable to generate the file (Code -1)";
         }
 
@@ -139,7 +139,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
-            free(fileName);
+            //free(fileName);
             return "ERROR: Unable to generate the file (Code -1)";
         }
 
@@ -162,7 +162,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
-            free(fileName);
+            //free(fileName);
             return "ERROR: Unable to generate the file (Code -1)";
         }
 
@@ -185,7 +185,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
         if (fileName == FILE_ERROR){
-            free(fileName);
+            //free(fileName);
             return "ERROR: Unable to generate the file (Code -1)";
         }
 
@@ -206,16 +206,17 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         result = runProgramAndCalculateTheScore(solution, "php UserCode.php");
     } else {
         printf("ERROR: Undefined language (Code 1)\n");
-        free(fileName);
         return "ERROR: Undefined language (Code 1)";
     }
 
-    free(fileName);
+    if (fileName != NULL) {
+        free(fileName);
+    }
     return result;
 }
 
 // Generate a file and write its content
-char* writeFile(char* content, char* ending){
+char* writeFile(const char* content, const char* ending){
     // Generate the correct file name depending on the langugae the user used
     size_t len = 8 + strlen(ending);
     char* fileName = malloc(len);
