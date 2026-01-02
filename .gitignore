@@ -45,4 +45,5 @@ app.*.map.json
 /android/app/release
 
 # Related to the backend in c
-native/build/
+native/build-linux
+assets/native/linux
