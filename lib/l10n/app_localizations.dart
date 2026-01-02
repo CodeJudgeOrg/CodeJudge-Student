@@ -238,6 +238,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'German'**
   String get localeGerman;
+
+  /// No description provided for @aboutThisButton.
+  ///
+  /// In en, this message translates to:
+  /// **'About this project'**
+  String get aboutThisButton;
+
+  /// No description provided for @reportABugButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Report a bug'**
+  String get reportABugButton;
+
+  /// No description provided for @requestAFeatureButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Request a feature'**
+  String get requestAFeatureButton;
+
+  /// No description provided for @seeLicenseButton.
+  ///
+  /// In en, this message translates to:
+  /// **'See the license'**
+  String get seeLicenseButton;
+
+  /// No description provided for @seeReleasesButton.
+  ///
+  /// In en, this message translates to:
+  /// **'See all releases'**
+  String get seeReleasesButton;
+
+  /// No description provided for @aboutMeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'About the developer'**
+  String get aboutMeButton;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

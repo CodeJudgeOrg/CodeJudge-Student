@@ -79,4 +79,22 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get localeGerman => 'Deutsch';
+
+  @override
+  String get aboutThisButton => 'Über dieses Projekt';
+
+  @override
+  String get reportABugButton => 'Einen Bug melden';
+
+  @override
+  String get requestAFeatureButton => 'Ein Feature beantragen';
+
+  @override
+  String get seeLicenseButton => 'Lizenz ansehen';
+
+  @override
+  String get seeReleasesButton => 'Alle Versionen ansehen';
+
+  @override
+  String get aboutMeButton => 'Über den Entwickler';
 }

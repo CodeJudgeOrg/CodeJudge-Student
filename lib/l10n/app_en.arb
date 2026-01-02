@@ -27,5 +27,11 @@
   "darkMode": "Dark",
   "localisationMode": "Language:",
   "localeEnglish": "English",
-  "localeGerman": "German"
+  "localeGerman": "German",
+  "aboutThisButton": "About this project",
+  "reportABugButton": "Report a bug",
+  "requestAFeatureButton": "Request a feature",
+  "seeLicenseButton": "See the license",
+  "seeReleasesButton": "See all releases",
+  "aboutMeButton": "About the developer"
 }
