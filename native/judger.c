@@ -2,7 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+// Additional for windows support
+#ifdef _WIN32
+#include <windows.h>
+#define popen _popen
+#define pclose _pclose
+#else
 #include <sys/wait.h>
+#endif
 
 // Pointers for returning errors
 #define FILE_ERROR ((char*)1)
@@ -29,7 +37,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Call the compiler for the correct language and check for errors
+#ifdef _WIN32
+        int compilation = callCompiler(fileName, "gcc %s -o UserProgramm.exe 2> NUL");
+#else
         int compilation = callCompiler(fileName, "gcc %s -o UserProgramm 2> /dev/null");
+#endif
         if (compilation == SYSTEM_ERROR) {
             free(fileName);
             return "ERROR: Calling system() didn't work (Code 3)";
@@ -42,7 +54,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "./UserProgramm");
+#ifdef _WIN32
+        result = runProgramAndCalculateTheScore((char*)solution, "UserProgramm.exe");
+#else
+        result = runProgramAndCalculateTheScore((char*)solution, "./UserProgramm");
+#endif
     } else if (strcmp(programmingLanguage, ".go") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
@@ -65,7 +81,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "./UserProgramm");
+#ifdef _WIN32
+        result = runProgramAndCalculateTheScore((char*)solution, "UserProgramm.exe");
+#else
+        result = runProgramAndCalculateTheScore((char*)solution, "./UserProgramm");
+#endif
     } else if (strcmp(programmingLanguage, ".py") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
@@ -75,7 +95,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Check at least whether the syntax is fine or not
+#ifdef _WIN32
+        int interpretation = callCompiler(fileName, "python -m py_compile %s 2> NUL");
+#else
         int interpretation = callCompiler(fileName, "python3 -m py_compile %s 2> /dev/null");
+#endif
         if (interpretation == SYSTEM_ERROR) {
             free(fileName);
             return "ERROR: Calling system() didn't work (Code 3)";
@@ -88,7 +112,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "python3 UserCode.py");
+#ifdef _WIN32
+        result = runProgramAndCalculateTheScore((char*)solution, "python UserCode.py");
+#else
+        result = runProgramAndCalculateTheScore((char*)solution, "python3 UserCode.py");
+#endif
     } else if (strcmp(programmingLanguage, ".cpp") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
@@ -98,7 +126,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Call the compiler for the correct language and check for errors
+#ifdef _WIN32
+        int compilation = callCompiler(fileName, "g++ %s -o UserProgramm.exe 2> NUL");
+#else
         int compilation = callCompiler(fileName, "g++ %s -o UserProgramm 2> /dev/null");
+#endif
         if (compilation == SYSTEM_ERROR) {
             free(fileName);
             return "ERROR: Calling system() didn't work (Code 3)";
@@ -111,7 +143,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "./UserProgramm");
+#ifdef _WIN32
+        result = runProgramAndCalculateTheScore((char*)solution, "UserProgramm.exe");
+#else
+        result = runProgramAndCalculateTheScore((char*)solution, "./UserProgramm");
+#endif
     }  else if (strcmp(programmingLanguage, ".rs") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
@@ -121,7 +157,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Call the compiler for the correct language and check for errors
+#ifdef _WIN32
+        int compilation = callCompiler(fileName, "rustc %s -o UserProgramm.exe");
+#else
         int compilation = callCompiler(fileName, "rustc %s -o UserProgramm");
+#endif
         if (compilation == SYSTEM_ERROR) {
             free(fileName);
             return "ERROR: Calling system() didn't work (Code 3)";
@@ -134,7 +174,11 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "./UserProgramm");
+#ifdef _WIN32
+        result = runProgramAndCalculateTheScore((char*)solution, "UserProgramm.exe");
+#else
+        result = runProgramAndCalculateTheScore((char*)solution, "./UserProgramm");
+#endif
     }  else if (strcmp(programmingLanguage, ".rb") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
@@ -157,7 +201,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "ruby UserCode.rb");
+        result = runProgramAndCalculateTheScore((char*)solution, "ruby UserCode.rb");
     }   else if (strcmp(programmingLanguage, ".js") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
@@ -180,7 +224,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "node UserCode.js");
+        result = runProgramAndCalculateTheScore((char*)solution, "node UserCode.js");
     }  else if (strcmp(programmingLanguage, ".php") == 0) {
         // Write the users code into a file with the correct ending of the language he used
         fileName = writeFile(usersCode, programmingLanguage);
@@ -203,7 +247,7 @@ char* runJudge(const char* usersCode, const char* programmingLanguage, const cha
         }
 
         // Run and correct the programm
-        result = runProgramAndCalculateTheScore(solution, "php UserCode.php");
+        result = runProgramAndCalculateTheScore((char*)solution, "php UserCode.php");
     } else {
         printf("ERROR: Undefined language (Code 1)\n");
         return "ERROR: Undefined language (Code 1)";
@@ -244,13 +288,21 @@ int callCompiler(char* fileName, char* instruction){
     snprintf(cmd, sizeof(cmd), instruction, fileName);
 
     int status = system(cmd);
-    int exitCode = WEXITSTATUS(status);
 
     // Check whether the system() works
     if (status == -1) {
         printf("ERROR: Calling system() didn't work (Code 3)\n");
         return SYSTEM_ERROR;
     }
+
+#ifdef _WIN32
+    // On Windows we do not distinguish missing compiler vs. other compilation errors reliably
+    if (status != 0) {
+        printf("ERROR: Error while compiling the code (Code 2)\n");
+        return COMPILATION_ERROR;
+    }
+#else
+    int exitCode = WEXITSTATUS(status);
 
     // Check for errors and whether the compiler is installed or not
     if (exitCode == 127) {
@@ -260,6 +312,7 @@ int callCompiler(char* fileName, char* instruction){
         printf("ERROR: Error while compiling the code (Code 2)\n");
         return COMPILATION_ERROR;
     }
+#endif
 
     return 0;
 }
@@ -293,6 +346,15 @@ char* runProgramAndCalculateTheScore(char* correctSolution, char* instruction) {
     int status = pclose(pipe);
 
     // Check whether the programm crashed by checking the exit codes
+#ifdef _WIN32
+    if (status != 0) {
+        printf("ERROR: The programm crashed  (Code -3)\n");
+        crashed = TRUE;
+    } else {
+        // If everything is fine return the correct Output
+        crashed = FALSE;
+    }
+#else
     if (WIFSIGNALED(status)) {
         printf("ERROR: The programm crashed  (Code -3)\n");
         crashed = TRUE;
@@ -300,6 +362,7 @@ char* runProgramAndCalculateTheScore(char* correctSolution, char* instruction) {
         // If everything is fine return the correct Output
         crashed = FALSE;
     }
+#endif
 
     // Calculate the score
     trimNewline(result);
@@ -332,3 +395,5 @@ void trimNewline(char* s) {
         len--;
     }
 }
+
+// #ifdef _WIN32 ... else ... endif makes sure it runs on windows as well as on linux
