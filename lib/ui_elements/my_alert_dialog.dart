@@ -29,10 +29,7 @@ class MyAlertDialog {
               onPressed: () {
                 Navigator.pop(context);
                 // Return home
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePageLayoutHandler()),
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageLayoutHandler()));
               },
             ),
           ],

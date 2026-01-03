@@ -55,10 +55,7 @@ class _TrainingsModeState extends State<TrainingsMode> {
                     decoration: BoxDecoration(
                       color: theme.colorScheme.surfaceContainerHigh,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: theme.colorScheme.outline,
-                        width: 1,
-                      ),
+                      border: Border.all(color: theme.colorScheme.outline, width: 1),
                     ),
                     child: Row(
                       children: [
