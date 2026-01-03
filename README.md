@@ -1,10 +1,18 @@
 # CodeJudge: v.1.0.0
-A simple, exam‑style code judge to help students practice and validate their programming logic. 
+A simple, exam‑style code judge built with Flutter and a native C backend to help students practice and validate their programming logic.
+
+## Tech Stack
+- **Native C backend:** code evaluation • compilation • output comparison
+- **Flutter (Dart):** UI • theming • localization • navigation
 
 ## Overview
 - [Purpose & Benefits](#Purpose-&-Benefits)
 - [Features](#Features)
 - [Contribution-Guidelines](#Contribution-Guidelines)
+  - *[Getting Started](#Getting-Started)*
+  - *[Code Structure](#Code-Structure)*
+  - *[Code Of Conduct](#Code-Of-Conduct)*
+  - *[Attribution](#Attribution)*
 - [Contact](#Contact)
 - [Legal & Privacy](#Legal-&-Privacy)
   - *[License](#License)*
@@ -13,10 +21,10 @@ A simple, exam‑style code judge to help students practice and validate their p
   - *[Data Usage Notice](#Data-Usage-Notice)*
   - *[Security Notice](#Security-Notice)*
   - *[Disclaimer](#Disclaimer)*
+- [Screenshots](#Screenshots)
 
 ## Purpose & Benefits
-CodeJudge is designed to help computer science students practice and prepare for their programming exams. It simulates a real exam environment — without syntax highlighting, auto‑completion,
-or other IDE helpers. While it might help you to improve your skills, **there is no guarantee that it will improve your skills or grades**.
+CodeJudge is designed to help computer science students practice and prepare for their programming exams. It combines a modern Flutter UI with a high‑performance native C backend to simulate real exam conditions — without syntax highlighting, auto‑completion, or other IDE helpers. While it might help you to improve your skills, **there is no guarantee that it will improve your skills or grades**.
 All your code is stored locally on your device—**your data remains private and is never shared** by this app.
 
 ## Features
@@ -25,11 +33,16 @@ All your code is stored locally on your device—**your data remains private and
 - Exercises of varying difficulty
 - Training mode without any helpers
 - Fast and deterministic evaluation powered by a native C backend
+- Basic error messages by the backend
 
 ### Further Features
 - Light & dark mode support
 - Material You design guidelines
 - English & German translation
+- Responsive UI
+
+## Installation & Support
+At the moment CodeJudge supports just Linux currently. Maybe another plattform will follow soon.
 
 ## Contribution Guidelines
 Everyone is welcome to participate in and adapt this project. All contributions and usage are governed by the [Apache 2.0 License](LICENSE).
@@ -40,6 +53,24 @@ Clone the repository:
 ```bash
 git clone https://github.com/naibaf-1/CodeJudge.git
 ```
+### Architecture Overview
+CodeJudge consists of two tightly integrated components:
+
+1. **Flutter Frontend (Dart)**  
+   - User interface 
+   - Training mode
+   - Localization & theming
+   - Exercises
+
+2. **Native C Backend**  
+   - Compiles and executes user code
+   - Compares output with expected results  
+   - Returns deterministic responses  
+
+### Code Structure
+- `/lib` — Flutter UI (Dart)
+- `/native` — CodeJudge engine (C)
+
 ### Code Of Conduct
 Please note that this project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md).  
 By participating, you are expected to uphold this code.
@@ -70,9 +101,15 @@ This app stores the code entered by the user locally on the device to process th
 No code is uploaded or transmitted to any server. All stored data is anonymous and used solely for functionality within the app.
 
 ### Security Notice
-This app generates a file containing the Code entered by the user. This file is necessary for the whole backend and it's overwritten as soon as the user enters Code using the same programming language.
+This app generates a file containing the code entered by the user. This file is necessary for the whole backend and it's overwritten as soon as the user enters code using the same programming language.
 While no personal data is collected or transmitted, users should be aware that unencrypted data may be accessible to other apps on the same device.
 To mitigate this risk, we recommend using devices with secure storage and keeping your system up to date. All data remains local and anonymous.
 
 ### Disclaimer
-This app was developed to help computer science students preparing for their exams written on paper or at least without helpers like syntax highlighting. This means that CodeJudge intentionally provides no helpers such as syntax highlighting or auto‑completion. Since this app depends on good exercises feel free to add or improve exercises!
+This app was developed to help computer science students preparing for their exams written on paper or at least without helpers like syntax highlighting. This means that CodeJudge intentionally provides no helpers such as syntax highlighting or auto‑completion. Since this app depends on good exercises, feel free to add or improve exercises!
+
+## Screenshots
+|<img src="./assets/screenshots/Exercises.png" width="540"/> <br>**See all exercises**|<img src="./assets/screenshots/Informations_Overlay.png" width="540"/> <br>**See details**|
+|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| <img src="./assets/screenshots/Training_mode.png" width="540"/> <br><div align="center">**Train your skills**</div> | <img src="./assets/screenshots/Training_mode_Hint.png" width="540"/> <br><div align="center">**See hints**</div> |
+| <img src="./assets/screenshots/Settings.png" width="540"/> <br><div align="center">**Toggle the settings**</div> |
