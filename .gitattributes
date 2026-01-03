@@ -1,2 +1,6 @@
-native/* linguist-detectable=true
-native/* linguist-language=C
+lib/* linguist-vendored
+windows/* linguist-vendored
+linux/* linguist-vendored
+macos/* linguist-vendored
+android/* linguist-vendored
+ios/* linguist-vendored
