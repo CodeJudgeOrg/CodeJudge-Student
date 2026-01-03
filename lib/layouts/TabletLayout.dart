@@ -36,10 +36,7 @@ class _TabletlayoutState extends State<Tabletlayout> {
             selectedIndexInNavigationBar = index;
           });
         } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SettingsPage()),
-          );
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage()));
         }
       },
       body: getSelectedPage(),
