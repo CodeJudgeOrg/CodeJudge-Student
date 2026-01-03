@@ -32,23 +32,8 @@ class MyDesktopAndTabletItem extends StatelessWidget{
           alignment: Alignment.center,
           child: Stack(
             children: [
-              Center(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Text(
-                  note,
-                  style: TextStyle(fontSize: 12),
-                ),
-              ),
+              Center(child: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
+              Positioned(bottom: 0, right: 0, child: Text(note, style: TextStyle(fontSize: 12))),
             ],
           )
         ),
@@ -90,22 +75,9 @@ class MyMobileItem extends StatelessWidget {
               children: [
                 Align(
                   alignment: AlignmentGeometry.centerLeft,
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
+                  child: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: Text(
-                    note,
-                    style: TextStyle(fontSize: 12),
-                  ),
-                ),
+                Positioned(bottom: 0, right: 0, child: Text(note, style: TextStyle(fontSize: 12))),
               ],
             )
         ),
