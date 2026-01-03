@@ -36,10 +36,7 @@ class _DesktoplayoutState extends State<Desktoplayout> {
             selectedIndexInNavigationBar = index;
           });
         } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SettingsPage()),
-          );
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage()));
         }
       },
       body: getSelectedPage(),
