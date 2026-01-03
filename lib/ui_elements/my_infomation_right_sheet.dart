@@ -27,10 +27,7 @@ class OpenMyRightSheet {
                       color: Theme.of(context).colorScheme.primaryContainer,
                       child: Row(
                         children: [
-                          IconButton(
-                            icon: Icon(Icons.close,),
-                            onPressed: () => Navigator.of(context).pop(),
-                          ),
+                          IconButton(icon: Icon(Icons.close), onPressed: () => Navigator.of(context).pop()),
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.all(16),
@@ -54,14 +51,12 @@ class OpenMyRightSheet {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: FloatingActionButton.extended(
-                onPressed: () {
-                  // Start the training
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TrainingsMode(task: task, hint: hint, solution: solution)),
-                  );                },
                 icon: Icon(Icons.play_circle),
                 label: Text(appLocalizations.rightSheetStart), // Start
+                onPressed: () {
+                  // Start the training
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => TrainingsMode(task: task, hint: hint, solution: solution)));
+                },
               ),
             ),
           ),
@@ -89,10 +84,7 @@ class MyRightSheet{
         final offsetAnimation = Tween<Offset>(
           begin: const Offset(1, 0), // Start at the right side
           end: Offset.zero,          // End: normal position
-        ).animate(CurvedAnimation(
-          parent: animation,
-          curve: Curves.easeOutCubic,
-        ));
+        ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOutCubic));
         return SlideTransition(position: offsetAnimation, child: child);
       },
     );
