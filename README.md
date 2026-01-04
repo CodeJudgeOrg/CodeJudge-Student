@@ -57,7 +57,9 @@ If the compiler misses, the C backend returns the error "No compiler found (Code
 4. Now you can move the folder wherever you want to keep this app
 5. Open the file CodeJudge.desktop in a text editor and adjust the following lines:
       > Exec=PATH/TO/THE/UNZIPED/RELEASE/CodeJudge
+      
       > Icon=PATH/TO/THE/UNZIPED/RELEASE/app_icon.png
+
    Replace PATH/TO/THE/UNZIPED/RELEASE/ with the actual folder path where you placed the app.
 6. Move the edited CodeJudge.desktop file to the following folder:
       > ~/.local/share/applications
