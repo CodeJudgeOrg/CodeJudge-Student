@@ -83,6 +83,7 @@ class SettingsPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Image.asset("assets/icon/app_icon.png", scale: 10),
                 TextButton(
                   child: Text(appLocalizations.aboutThisButton), // About this project
                   onPressed: () {
