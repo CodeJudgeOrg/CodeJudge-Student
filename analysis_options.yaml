@@ -10,6 +10,7 @@
 analyzer:
   errors:
     must_be_immutable: ignore
+    dangling_library_doc_comments: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
