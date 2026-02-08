@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
 
     // Apply the correct theme to the whole app
     return MaterialApp(
-      title: 'Orderty',
+      title: 'CodeJudge',
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: settingsController.selectedTheme,
