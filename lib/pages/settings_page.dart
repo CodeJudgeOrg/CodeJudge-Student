@@ -101,13 +101,13 @@ class SettingsPage extends StatelessWidget {
                 TextButton(
                   child: Text(appLocalizations.aboutThisButton), // About this project
                   onPressed: () {
-                    openLink("https://github.com/CodeJudgeOrg/CodeJudge-Student");
+                    openLink("https://github.com/CodeJudgeOrg/CodeJudge-Student#readme");
                   },
                 ),
                 TextButton(
                   child: Text(appLocalizations.seeLicenseButton), // See the license
                   onPressed: () {
-                    openLink("https://github.com/CodeJudgeOrg/CodeJudge-Student?tab=Apache-2.0-1-ov-file");
+                    openLink("https://github.com/CodeJudgeOrg/CodeJudge-Student?tab=Apache-2.0-1-ov-file#readme");
                   },
                 ),
                 TextButton(
