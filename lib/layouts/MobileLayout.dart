@@ -18,9 +18,9 @@ import 'package:code_judge/pages/settings_page.dart';
 import 'package:code_judge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_judge/ui_elements/my_list_items.dart';
 import 'package:code_judge/ui_elements/my_navigation_bar.dart';
-import 'package:code_judge/utils/exercise_datamodell.dart';
 import 'package:code_judge/utils/global_variables.dart';
 import 'package:code_judge/utils/my_exercises.dart';
+import 'package:code_judge_library/exercise_datamodel.dart';
 import 'package:flutter/material.dart';
 
 class Mobilelayout extends StatefulWidget{
@@ -62,7 +62,7 @@ class _MobilelayoutState extends State<Mobilelayout> {
 // Home Page showing all exercises
 class ExercisePage extends StatelessWidget{
   // Display the correct exercises
-  List<ExerciseDatamodell> items = MyExercises().getAllExercises();
+  List<ExerciseDatamodel> items = MyExercises().getAllExercises();
 
   ExercisePage({super.key});
 
