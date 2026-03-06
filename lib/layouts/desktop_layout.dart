@@ -22,12 +22,13 @@ import 'package:code_judge_library/code_judge_navigation_bar.dart';
 import 'package:code_judge_library/exercise_datamodel.dart';
 import 'package:flutter/material.dart';
 
-class Mobilelayout extends StatefulWidget{
+class Desktoplayout extends StatefulWidget{
+  const Desktoplayout({super.key});
   @override
-  State<Mobilelayout> createState() => _MobilelayoutState();
+  State<Desktoplayout> createState() => _DesktoplayoutState();
 }
 
-class _MobilelayoutState extends State<Mobilelayout> {
+class _DesktoplayoutState extends State<Desktoplayout> {
   Widget getSelectedPage() {
     switch (selectedIndexInNavigationBar) {
       case 0:
@@ -40,7 +41,7 @@ class _MobilelayoutState extends State<Mobilelayout> {
   @override
   Widget build(BuildContext context) {
     return CodeJudgeNavigationBar(
-      screenType: CodeJudgeScreenType.mobile,
+      screenType: CodeJudgeScreenType.desktop,
       selectedIndex: selectedIndexInNavigationBar,
       onItemSelected:(index) {
         // Normal navigation
@@ -74,21 +75,25 @@ class ExercisePage extends StatelessWidget{
         children: [
           // Display a list of exercises
           Expanded(
-            child: ListView.separated(
-              padding: const EdgeInsets.all(8),
-              itemCount: items.length,
-              separatorBuilder: (context, index) => const SizedBox(height: 8),
-              itemBuilder: (context, index) {
-                return CodeJudgeMobileItem(
-                  title: items[index].name,
-                  note: appLocalizations.noteDifficultyLevel + items[index].difficultyLevel.toString(),
-                  onTap: (){
-                    // Open an overlay showing further informations
-                    OpenMyRightSheet.openMyRightSheet(context, items[index].name, items[index].description, items[index].task, items[index].hint, items[index].solution, 300);
-                  }
-                );
-              },
-            ),
+            child: GridView.count(
+              crossAxisCount: 5,
+              padding: const EdgeInsets.all(16),
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              children: List.generate(
+                items.length,
+                (index) {
+                  return CodeJudgeDesktopAndTabletItem(
+                    title: items[index].name,
+                    note: appLocalizations.noteDifficultyLevel + items[index].difficultyLevel.toString(),
+                    onTap: (){
+                      // Open an overlay showing further informations
+                      OpenMyRightSheet.openMyRightSheet(context, items[index].name, items[index].description, items[index].task, items[index].hint, items[index].solution, 500);
+                    }
+                  );
+                }
+              ),
+            )
           ),
         ],
       ),

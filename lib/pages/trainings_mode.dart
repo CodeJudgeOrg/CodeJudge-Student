@@ -19,11 +19,12 @@ import 'package:code_judge_library/code_judge_edit_text.dart';
 import 'package:flutter/material.dart';
 
 class TrainingsMode extends StatefulWidget{
-  String task;
-  String solution;
-  String hint;
+  final String task;
+  final String solution;
+  final String hint;
   
-  TrainingsMode({
+  const TrainingsMode({
+    super.key,
     required this.task,
     required this.solution,
     required this.hint,
@@ -82,7 +83,6 @@ class _TrainingsModeState extends State<TrainingsMode> {
                         ),
                         const SizedBox(width: 16),
                         FloatingActionButton.small(
-                          child: Icon(Icons.lightbulb_outline),
                           heroTag: "hint",
                           onPressed: (){
                             MyAlertDialog().showHintDialog(
@@ -91,7 +91,8 @@ class _TrainingsModeState extends State<TrainingsMode> {
                               widget.hint,
                               appLocalizations.alertClose, // Close
                             );
-                          }
+                          },
+                          child: Icon(Icons.lightbulb_outline),
                         )
                       ],
                     ),

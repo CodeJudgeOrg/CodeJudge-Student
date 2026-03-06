@@ -13,9 +13,9 @@
 /// limitations under the License.
 
 import 'package:code_judge/l10n/app_localizations.dart';
-import 'package:code_judge/layouts/DesktopLayout.dart';
-import 'package:code_judge/layouts/MobileLayout.dart';
-import 'package:code_judge/layouts/TabletLayout.dart';
+import 'package:code_judge/layouts/desktop_layout.dart';
+import 'package:code_judge/layouts/mobile_layout.dart';
+import 'package:code_judge/layouts/tablet_layout.dart';
 import 'package:code_judge/utils/judger_bindings.dart';
 import 'package:code_judge/utils/judger_loader.dart';
 import 'package:flutter/material.dart';

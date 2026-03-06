@@ -12,8 +12,6 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 
-import 'dart:ui';
-
 import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/pages/trainings_mode.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +87,7 @@ class MyRightSheet{
       context: context,
       barrierDismissible: true,
       barrierLabel: AppLocalizations.of(context)!.rightSheetDetails, // Details
-      barrierColor: theme.colorScheme.scrim.withOpacity(0.5),
+      barrierColor: theme.colorScheme.scrim.withAlpha(128),
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) {
         return child;
