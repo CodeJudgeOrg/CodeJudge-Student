@@ -16,10 +16,10 @@ import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/main.dart';
 import 'package:code_judge/pages/settings_page.dart';
 import 'package:code_judge/ui_elements/my_infomation_right_sheet.dart';
-import 'package:code_judge/ui_elements/my_list_items.dart';
 import 'package:code_judge/ui_elements/my_navigation_bar.dart';
 import 'package:code_judge/utils/global_variables.dart';
 import 'package:code_judge/utils/my_exercises.dart';
+import 'package:code_judge_library/code_judge_list_items.dart';
 import 'package:code_judge_library/exercise_datamodel.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +83,7 @@ class ExercisePage extends StatelessWidget{
               children: List.generate(
                 items.length,
                 (index) {
-                  return MyDesktopAndTabletItem(
+                  return CodeJudgeDesktopAndTabletItem(
                     title: items[index].name,
                     note: appLocalizations.noteDifficultyLevel + items[index].difficultyLevel.toString(),
                     onTap: (){
