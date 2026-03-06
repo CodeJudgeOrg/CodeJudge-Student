@@ -15,7 +15,7 @@
 import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/main.dart';
 import 'package:code_judge/ui_elements/my_alert_dialog.dart';
-import 'package:code_judge/ui_elements/my_edit_text.dart';
+import 'package:code_judge_library/code_judge_edit_text.dart';
 import 'package:flutter/material.dart';
 
 class TrainingsMode extends StatefulWidget{
@@ -49,6 +49,7 @@ class _TrainingsModeState extends State<TrainingsMode> {
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    String? userCode;
 
     return Scaffold(
       appBar: AppBar(
@@ -96,9 +97,11 @@ class _TrainingsModeState extends State<TrainingsMode> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  MyEditText(
+                  CodeJudgeEditText(
                     hint: appLocalizations.enterCodeHint, // Enter your code...
-                    controller: enterCodeController,
+                    onInputDone: (value) {
+                      userCode = value.trim();
+                    },
                   ),
                   const SizedBox(height: 80),
                 ],
@@ -148,18 +151,19 @@ class _TrainingsModeState extends State<TrainingsMode> {
                   icon: Icon(Icons.done_all),
                   heroTag: "done",
                   onPressed: () {
-                    String userCode = enterCodeController.text;
-                    // Call library and check it's result
-                    String resultByJudger = judgerLib.callJudger(userCode, programmingLanguage, widget.solution);
+                    if (userCode != null) {
+                      // Call library and check it's result
+                      String resultByJudger = judgerLib.callJudger(userCode!, programmingLanguage, widget.solution);
 
-                    // If the result is an error message display it in the lower left Text()
-                    if (resultByJudger.startsWith("ERROR:")) {
-                      setState(() {
-                        textBoxMessage = resultByJudger;
-                      });
-                    // Else open a Dialog an tell the user about it's result
-                    } else {
-                      MyAlertDialog().showTrainingSuccessfullDialog(context, int.parse(resultByJudger.trimLeft()));
+                      // If the result is an error message display it in the lower left Text()
+                      if (resultByJudger.startsWith("ERROR:")) {
+                        setState(() {
+                          textBoxMessage = resultByJudger;
+                        });
+                      // Else open a Dialog an tell the user about it's result
+                      } else {
+                        MyAlertDialog().showTrainingSuccessfullDialog(context, int.parse(resultByJudger.trimLeft()));
+                      }
                     }
                   },
                 ),
