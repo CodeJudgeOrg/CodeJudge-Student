@@ -37,8 +37,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v.1.0.0"
-      resolved-ref: "6ba1c190c3943751602e30fe0d27b4bedb22ba21"
+      ref: HEAD
+      resolved-ref: e8390cb0556b88c47c161d5836ad6666df2c239c
       url: "https://github.com/CodeJudgeOrg/CodeJudge-Library"
     source: git
     version: "1.0.0"
