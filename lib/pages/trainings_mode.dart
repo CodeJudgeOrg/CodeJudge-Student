@@ -16,6 +16,7 @@ import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/main.dart';
 import 'package:code_judge/ui_elements/my_alert_dialog.dart';
 import 'package:code_judge_library/code_judge_edit_text.dart';
+import 'package:code_judge_library/code_judge_task_box.dart';
 import 'package:flutter/material.dart';
 
 class TrainingsMode extends StatefulWidget{
@@ -59,54 +60,24 @@ class _TrainingsModeState extends State<TrainingsMode> {
       ),
       body: Column(
         children: [
-          // Scrollable area
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surfaceContainerHigh,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: theme.colorScheme.outline, width: 1),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            widget.task, // The task
-                            softWrap: true,
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        FloatingActionButton.small(
-                          heroTag: "hint",
-                          onPressed: (){
-                            MyAlertDialog().showHintDialog(
-                              context,
-                              appLocalizations.dialogHint, // Hint
-                              widget.hint,
-                              appLocalizations.alertClose, // Close
-                            );
-                          },
-                          child: Icon(Icons.lightbulb_outline),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  CodeJudgeEditText(
-                    hint: appLocalizations.enterCodeHint, // Enter your code...
-                    onInputDone: (value) {
-                      userCode = value.trim();
-                    },
-                  ),
-                  const SizedBox(height: 80),
-                ],
-              ),
+          // Display the task and the button for the hint
+          CodeJudgeTaskBox(
+            task: widget.task,
+            showButton: true, // Display the button and apply its attributes
+            buttonIcon: Icons.lightbulb_outline,
+            onButtonPressed: () {
+              MyAlertDialog().showHintDialog(
+                context,
+                appLocalizations.dialogHint, // Hint
+                widget.hint,
+                appLocalizations.alertClose, // Close
+              );
+            },
+            child: CodeJudgeEditText( // Display a TextField
+              hint: appLocalizations.enterCodeHint, // Enter your code...
+              onInputDone: (value) {
+                userCode = value.trim();
+              },
             ),
           ),
           // Container is pinned to the bottom of the window
