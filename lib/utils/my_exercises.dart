@@ -1,4 +1,4 @@
-import 'package:code_judge_library/exercise_datamodel.dart';
+import 'package:code_judge_library/datamodels.dart';
 
 /// Copyright 2026 Fabian Roland (naibaf-1)
 

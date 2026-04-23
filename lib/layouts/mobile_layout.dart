@@ -20,7 +20,7 @@ import 'package:code_judge/utils/my_exercises.dart';
 import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_list_items.dart';
 import 'package:code_judge_library/code_judge_navigation_bar.dart';
-import 'package:code_judge_library/exercise_datamodel.dart';
+import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
