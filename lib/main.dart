@@ -32,7 +32,8 @@ void main() async {
   final lib = await loadJudgerLibrary();
   judgerLib = JudgerLib(lib);
 
-  final submittedExercisesController = SubmittedExercises();
+  final submissionsController = SubmissionProvider();
+  final exerciseController = ExerciseProvider();
   final settingsController = SettingsController();
 
   //Apply SharedPreferences
@@ -40,7 +41,8 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => submittedExercisesController),
+        ChangeNotifierProvider(create: (_) => submissionsController),
+        ChangeNotifierProvider(create: (_) => exerciseController),
         ChangeNotifierProvider(create: (_) => settingsController),
       ],
       child: const MyApp(),
