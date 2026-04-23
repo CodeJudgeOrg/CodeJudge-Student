@@ -16,7 +16,6 @@ import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/pages/settings_page.dart';
 import 'package:code_judge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_judge/utils/global_variables.dart';
-import 'package:code_judge/utils/my_exercises.dart';
 import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_list_items.dart';
 import 'package:code_judge_library/code_judge_navigation_bar.dart';
@@ -66,14 +65,14 @@ class _MobilelayoutState extends State<Mobilelayout> {
 
 // Home Page showing all exercises
 class ExercisePage extends StatelessWidget{
-  // Display the correct exercises
-  List<ExerciseDatamodel> items = MyExercises().getAllExercises();
-
-  ExercisePage({super.key});
+  const ExercisePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
+
+    // Display the correct exercises
+    List<ExerciseDatamodel> items = context.watch<ExerciseProvider>().exercises;
 
     return Scaffold(
       body: Column(
@@ -108,7 +107,7 @@ class SubmissionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<ExerciseDatamodel> submissions = context.watch<SubmittedExercises>().submittedExercises;
+    List<SubmissionDatamodel> submissions = context.watch<SubmissionProvider>().submissions;
 
     return Scaffold(
       body: Column(
@@ -120,8 +119,8 @@ class SubmissionPage extends StatelessWidget {
               separatorBuilder: (context, index) => const SizedBox(height: 8),
               itemBuilder: (context, index) {
                 return CodeJudgeMobileItem(
-                  title: submissions[index].name,
-                  note: submissions[index].description,
+                  title: submissions[index].exerciseName,
+                  note: submissions[index].task,
                   onTap: () {
                     // TODO: If time, add a screen to edit a submission
                   },

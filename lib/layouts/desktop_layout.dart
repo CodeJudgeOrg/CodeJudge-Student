@@ -16,11 +16,12 @@ import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/pages/settings_page.dart';
 import 'package:code_judge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_judge/utils/global_variables.dart';
-import 'package:code_judge/utils/my_exercises.dart';
+import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_list_items.dart';
 import 'package:code_judge_library/code_judge_navigation_bar.dart';
 import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Desktoplayout extends StatefulWidget{
   const Desktoplayout({super.key});
@@ -63,14 +64,14 @@ class _DesktoplayoutState extends State<Desktoplayout> {
 
 // Home Page showing all exercises
 class ExercisePage extends StatelessWidget{
-  // Display the correct exercises
-  List<ExerciseDatamodel> items = MyExercises().getAllExercises();
-
-  ExercisePage({super.key});
+  const ExercisePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
+
+    // Display the correct exercises
+    List<ExerciseDatamodel> items = context.watch<ExerciseProvider>().exercises;
 
     return Scaffold(
       body: Column(
