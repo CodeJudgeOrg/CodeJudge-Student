@@ -1,19 +1,31 @@
+import 'package:code_judge/utils/my_exercises.dart';
 import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SubmittedExercises extends ChangeNotifier {
-  List<ExerciseDatamodel> submittedExercises = [];
+// Store a list of shared exercises
+class ExerciseProvider extends ChangeNotifier {
+  List<ExerciseDatamodel> exercises = MyExercises().getAllExercises();
+
+  void addExercises (List<ExerciseDatamodel> newExercises) {
+    exercises.addAll(newExercises);
+    notifyListeners();
+  }
+}
+
+// Store a list of submissions
+class SubmissionProvider extends ChangeNotifier {
+  List<SubmissionDatamodel> submissions = [];
 
   // Add a submission
-  void addSubmission (ExerciseDatamodel exercise) {
-    submittedExercises.add(exercise);
+  void addSubmission (SubmissionDatamodel exercise) {
+    submissions.add(exercise);
     notifyListeners();
   }
 
   // Remove a submission
   void removeSubmission (int position) {
-    submittedExercises.removeAt(position);
+    submissions.removeAt(position);
     notifyListeners();
   }
 }
