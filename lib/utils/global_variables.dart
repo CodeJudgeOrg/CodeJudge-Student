@@ -24,8 +24,8 @@ List<MyNavigationBarItemData> getNavigationBarItems(BuildContext context) {
   final appLocalizations = AppLocalizations.of(context)!;
 
   return [
-    MyNavigationBarItemData(icon: Icons.code_outlined, label: appLocalizations.exercises), // Exercises
-    MyNavigationBarItemData(icon: Icons.ios_share_outlined, label: "Submissions"), // TODO: Translate
-    MyNavigationBarItemData(icon: Icons.settings_outlined, label: appLocalizations.settings), // Settings
+    MyNavigationBarItemData(icon: Icons.task_alt_outlined, label: appLocalizations.exercises), // "Exercises"
+    MyNavigationBarItemData(icon: Icons.assignment_return_outlined, label: appLocalizations.submissions), // "Submissions"
+    MyNavigationBarItemData(icon: Icons.settings_outlined, label: appLocalizations.settings), // "Settings"
   ];
 }
