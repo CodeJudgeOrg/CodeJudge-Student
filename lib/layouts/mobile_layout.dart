@@ -17,10 +17,12 @@ import 'package:code_judge/pages/settings_page.dart';
 import 'package:code_judge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_judge/utils/global_variables.dart';
 import 'package:code_judge/utils/my_exercises.dart';
+import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_list_items.dart';
 import 'package:code_judge_library/code_judge_navigation_bar.dart';
 import 'package:code_judge_library/exercise_datamodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Mobilelayout extends StatefulWidget{
   const Mobilelayout({super.key});
@@ -34,6 +36,8 @@ class _MobilelayoutState extends State<Mobilelayout> {
     switch (selectedIndexInNavigationBar) {
       case 0:
         return ExercisePage();
+      case 1:
+        return SubmissionPage();
       default:
         return Placeholder();
     }
@@ -46,7 +50,7 @@ class _MobilelayoutState extends State<Mobilelayout> {
       selectedIndex: selectedIndexInNavigationBar,
       onItemSelected:(index) {
         // Normal navigation
-        if (index != 1) {
+        if (index != 2) {
           setState(() {
             selectedIndexInNavigationBar = index;
           });
@@ -95,5 +99,40 @@ class ExercisePage extends StatelessWidget{
         ],
       ),
     );
+  }
+}
+
+// Page showing all submissions
+class SubmissionPage extends StatelessWidget {
+  const SubmissionPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<ExerciseDatamodel> submissions = context.watch<SubmittedExercises>().submittedExercises;
+
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.all(8),
+              itemCount: submissions.length,
+              separatorBuilder: (context, index) => const SizedBox(height: 8),
+              itemBuilder: (context, index) {
+                return CodeJudgeMobileItem(
+                  title: submissions[index].name,
+                  note: submissions[index].description,
+                  onTap: () {
+                    // TODO: If time, add a screen to edit a submission
+                  },
+                );
+              },
+            ),
+          )
+        ],
+      ),
+    );
+    // TODO: Display a list of exercises, that have been submitted
+    // => Rigt-Click -> Submit -> Submit and add the exercise to this list, remove it from the old one
   }
 }

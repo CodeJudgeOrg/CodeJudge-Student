@@ -33,6 +33,8 @@ class _DesktoplayoutState extends State<Desktoplayout> {
     switch (selectedIndexInNavigationBar) {
       case 0:
         return ExercisePage();
+      case 1:
+        return SubmissionPage();
       default:
         return Placeholder();
     }
@@ -45,7 +47,7 @@ class _DesktoplayoutState extends State<Desktoplayout> {
       selectedIndex: selectedIndexInNavigationBar,
       onItemSelected:(index) {
         // Normal navigation
-        if (index != 1) {
+        if (index != 2) {
           setState(() {
             selectedIndexInNavigationBar = index;
           });
@@ -98,5 +100,15 @@ class ExercisePage extends StatelessWidget{
         ],
       ),
     );
+  }
+}
+
+// Page showing all submissions
+class SubmissionPage extends StatelessWidget {
+  const SubmissionPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Placeholder();
   }
 }
