@@ -111,6 +111,35 @@ class SubmissionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    // Display a list of submissions
+    List<SubmissionDatamodel> items = context.watch<SubmissionProvider>().submissions;
+
+    return Scaffold(
+      body: Column(
+        children: [
+          // Display a list of exercises
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 3,
+              padding: const EdgeInsets.all(16),
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              children: List.generate(
+                items.length,
+                (index) {
+                  return CodeJudgeDesktopAndTabletItem(
+                    title: items[index].exerciseName,
+                    note: items[index].task,
+                    onTap: (){
+                      // TODO: If time, add a screen to edit a submission
+                    }
+                  );
+                }
+              ),
+            )
+          ),
+        ],
+      ),
+    );
   }
 }
