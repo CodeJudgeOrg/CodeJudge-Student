@@ -13,7 +13,7 @@
 /// limitations under the License.
 
 import 'package:code_judge/l10n/app_localizations.dart';
-import 'package:code_judge/main.dart';
+import 'package:code_judge/utils/my_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
