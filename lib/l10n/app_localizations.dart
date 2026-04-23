@@ -191,6 +191,12 @@ abstract class AppLocalizations {
   /// **'The programm ran successfulle & the output was correct as well!'**
   String get result100;
 
+  /// No description provided for @submissions.
+  ///
+  /// In en, this message translates to:
+  /// **'Submissions'**
+  String get submissions;
+
   /// No description provided for @settings.
   ///
   /// In en, this message translates to:

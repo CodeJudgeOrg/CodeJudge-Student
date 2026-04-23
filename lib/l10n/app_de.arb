@@ -20,6 +20,8 @@
   "result75": "Das Programm lief erfolgreich, aber der Output ist falsch",
   "result100": "Das Programm lief erfolgreich & lieferte den korrekten Output!",
 
+  "submissions": "Abgaben",
+
   "settings": "Einstellungen",
   "themeMode": "Modus des Themas:",
   "system": "System",

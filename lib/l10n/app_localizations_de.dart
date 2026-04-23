@@ -57,6 +57,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get result100 => 'Das Programm lief erfolgreich & lieferte den korrekten Output!';
 
   @override
+  String get submissions => 'Abgaben';
+
+  @override
   String get settings => 'Einstellungen';
 
   @override

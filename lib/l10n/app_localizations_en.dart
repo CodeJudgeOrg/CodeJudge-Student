@@ -57,6 +57,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get result100 => 'The programm ran successfulle & the output was correct as well!';
 
   @override
+  String get submissions => 'Submissions';
+
+  @override
   String get settings => 'Settings';
 
   @override

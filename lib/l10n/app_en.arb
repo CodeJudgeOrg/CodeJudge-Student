@@ -20,6 +20,8 @@
   "result75": "The programm ran successfully, but the output was wrong",
   "result100": "The programm ran successfulle & the output was correct as well!",
 
+  "submissions": "Submissions",
+
   "settings": "Settings",
   "themeMode": "Theme Mode:",
   "system": "System",
