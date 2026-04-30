@@ -6,10 +6,55 @@ import 'package:shared_preferences/shared_preferences.dart';
 // Store a list of shared exercises
 class ExerciseProvider extends ChangeNotifier {
   List<ExerciseDatamodel> exercises = MyExercises().getAllExercises();
+  bool showSelectionBar = false;
 
   void addExercises (List<ExerciseDatamodel> newExercises) {
     exercises.addAll(newExercises);
     notifyListeners();
+  }
+
+  // Select or unselect an exercise
+  void toggleSelectionOfExercise(int position, bool select) {
+    exercises[position].isSelected = select;
+
+    if (select) {
+      // Show the AppBar
+      showSelectionBar = true;
+    } else {
+      // If no other exercise is selected, hide the AppBar
+      if (!exercises.any((exercise) => exercise.isSelected == true)) {
+        showSelectionBar = false;
+      }
+    }
+
+    notifyListeners();
+  }
+
+  // Unselect all exercises at once
+  void unselectAllExercises() {
+    int itemCount = exercises.length;
+    for (int i = 0; i < itemCount; i++) {
+      exercises[i].isSelected = false;
+    }
+    // Hide the AppBar
+    showSelectionBar = false;
+
+    notifyListeners();
+  }
+
+  // Get a list of selected exercises
+  List<ExerciseDatamodel> getSelectedExercises() {
+    int itemCount = exercises.length;
+    List<ExerciseDatamodel> selected = [];
+
+    // Loop through all exercises and pick evry selected one
+    for (var i = 0; i < itemCount; i++) {
+      if (exercises[i].isSelected) {
+        selected.add(exercises[i]);
+      }
+    }
+
+    return selected;
   }
 }
 
