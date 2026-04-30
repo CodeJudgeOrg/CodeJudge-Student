@@ -19,6 +19,7 @@ import 'package:code_judge/utils/global_variables.dart';
 import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_list_items.dart';
 import 'package:code_judge_library/code_judge_navigation_bar.dart';
+import 'package:code_judge_library/code_judge_selection_app_bar.dart';
 import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -74,6 +75,13 @@ class ExercisePage extends StatelessWidget{
     List<ExerciseDatamodel> items = context.watch<ExerciseProvider>().exercises;
 
     return Scaffold(
+      appBar: CodeJudgeSelectionAppBar(
+        show: context.watch<ExerciseProvider>().showSelectionBar,
+        title: appLocalizations.selectionAppBarTitle, // "Selection"
+        onClosePressed: () => context.read<ExerciseProvider>().unselectAllExercises(),
+        onUploadPressed: () {},
+        onDeletePressed: () {}
+      ),
       body: Column(
         children: [
           // Display a list of exercises
@@ -89,10 +97,21 @@ class ExercisePage extends StatelessWidget{
                   return CodeJudgeDesktopAndTabletItem(
                     title: items[index].name,
                     note: appLocalizations.noteDifficultyLevel + items[index].difficultyLevel.toString(),
+                    isSelected: items[index].isSelected,
                     onTap: (){
+                      if(items[index].isSelected){
+                        // Deselect the item and return
+                        context.read<ExerciseProvider>().toggleSelectionOfExercise(index, false);
+                        return;
+                      }
+
                       // Open an overlay showing further informations
                       OpenMyRightSheet.openMyRightSheet(context, items[index].name, items[index].description, items[index].task, items[index].hint, items[index].solution, 500);
-                    }
+                    },
+                    onLongPress: (details) {
+                      // Mark this exercise as selected
+                      context.read<ExerciseProvider>().toggleSelectionOfExercise(index, true);
+                    },
                   );
                 }
               ),

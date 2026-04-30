@@ -17,6 +17,7 @@ import 'package:code_judge/pages/settings_page.dart';
 import 'package:code_judge/ui_elements/my_infomation_right_sheet.dart';
 import 'package:code_judge/utils/global_variables.dart';
 import 'package:code_judge/utils/my_provider.dart';
+import 'package:code_judge_library/code_judge_button_menu.dart';
 import 'package:code_judge_library/code_judge_list_items.dart';
 import 'package:code_judge_library/code_judge_navigation_bar.dart';
 import 'package:code_judge_library/datamodels.dart';
@@ -87,15 +88,35 @@ class ExercisePage extends StatelessWidget{
                 return CodeJudgeMobileItem(
                   title: items[index].name,
                   note: appLocalizations.noteDifficultyLevel + items[index].difficultyLevel.toString(),
+                  isSelected: items[index].isSelected,
                   onTap: (){
+                    if (items[index].isSelected) {
+                      // Deselect the exercise and return
+                      context.read<ExerciseProvider>().toggleSelectionOfExercise(index, false);
+                      return;
+                    }
                     // Open an overlay showing further informations
                     OpenMyRightSheet.openMyRightSheet(context, items[index].name, items[index].description, items[index].task, items[index].hint, items[index].solution, 300);
-                  }
+                  },
+                  onLongPress: (details) {
+                    // Mark this exercise as selected
+                    context.read<ExerciseProvider>().toggleSelectionOfExercise(index, true);
+                  },
                 );
               },
             ),
           ),
         ],
+      ),
+      // Button in the lower right corner
+      floatingActionButton: CodeJudgeButtonMenu(
+        show: context.read<ExerciseProvider>().showSelectionBar,
+        icon: Icons.hourglass_empty_outlined,
+        label: "Empty",
+        onDeselectPressed: () => context.read<ExerciseProvider>().unselectAllExercises(), // Unselect all selected exercises
+        onUploadPressed: () {}, // TODO
+        onDeletePressed: () {}, // TODO
+        onButtonPressed: () {} // TODO
       ),
     );
   }
@@ -132,6 +153,6 @@ class SubmissionPage extends StatelessWidget {
       ),
     );
     // TODO: Display a list of exercises, that have been submitted
-    // => Rigt-Click -> Submit -> Submit and add the exercise to this list, remove it from the old one
+    // => Right-Click -> Submit -> Submit and add the exercise to this list, remove it from the old one
   }
 }
