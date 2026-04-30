@@ -15,9 +15,11 @@
 import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/main.dart';
 import 'package:code_judge/ui_elements/my_alert_dialog.dart';
+import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_edit_text.dart';
 import 'package:code_judge_library/code_judge_task_box.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TrainingsMode extends StatefulWidget{
   final String task;
@@ -57,6 +59,14 @@ class _TrainingsModeState extends State<TrainingsMode> {
       appBar: AppBar(
         title: Text(appLocalizations.trainingsMode), // Trainings mode
         backgroundColor: theme.colorScheme.primaryContainer,
+        leading: IconButton(
+          onPressed: () {
+            // Deselect all exercises
+            context.read<ExerciseProvider>().unselectAllExercises();
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_outlined)
+        ),
       ),
       body: Column(
         children: [
