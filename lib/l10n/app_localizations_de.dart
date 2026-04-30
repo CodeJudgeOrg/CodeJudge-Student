@@ -60,6 +60,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get submissions => 'Abgaben';
 
   @override
+  String get selectionAppBarTitle => 'Auswahl';
+
+  @override
   String get settings => 'Einstellungen';
 
   @override

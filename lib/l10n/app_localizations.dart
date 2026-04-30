@@ -197,6 +197,12 @@ abstract class AppLocalizations {
   /// **'Submissions'**
   String get submissions;
 
+  /// No description provided for @selectionAppBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Selection'**
+  String get selectionAppBarTitle;
+
   /// No description provided for @settings.
   ///
   /// In en, this message translates to:
