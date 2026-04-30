@@ -48,3 +48,4 @@ app.*.map.json
 native/build-*
 assets/native/
 releases
+start-debugging-server.sh
