@@ -16,6 +16,7 @@ import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/layouts/desktop_layout.dart';
 import 'package:code_judge/layouts/mobile_layout.dart';
 import 'package:code_judge/layouts/tablet_layout.dart';
+import 'package:code_judge/utils/api_connector.dart';
 import 'package:code_judge/utils/judger_bindings.dart';
 import 'package:code_judge/utils/judger_loader.dart';
 import 'package:code_judge/utils/my_provider.dart';
@@ -99,7 +100,10 @@ class HomePageLayoutHandler extends StatelessWidget{
     return LayoutBuilder(
       builder: (context, constrains) {
         final screenType = Responsive.getScreenType(constrains.maxWidth);
-      
+
+        // Receive all exercises
+        ApiConnector().receiveExercises(context);
+
         // Use the correct layout depending on the screensize
         switch (screenType) {
           // User is supposed to use a desktop
