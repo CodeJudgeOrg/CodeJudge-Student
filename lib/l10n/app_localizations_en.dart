@@ -15,6 +15,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noteDifficultyLevel => 'Level of difficulty: ';
 
   @override
+  String get syncExercises => 'Synchronise';
+
+  @override
   String get trainingsMode => 'Trainings mode';
 
   @override

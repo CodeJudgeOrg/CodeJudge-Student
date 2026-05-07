@@ -107,6 +107,12 @@ abstract class AppLocalizations {
   /// **'Level of difficulty: '**
   String get noteDifficultyLevel;
 
+  /// No description provided for @syncExercises.
+  ///
+  /// In en, this message translates to:
+  /// **'Synchronise'**
+  String get syncExercises;
+
   /// No description provided for @trainingsMode.
   ///
   /// In en, this message translates to:

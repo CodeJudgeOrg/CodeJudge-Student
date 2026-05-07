@@ -3,6 +3,7 @@
 
   "exercises": "Übungen",
   "noteDifficultyLevel": "Schwierigkeitsgrad: ",
+  "syncExercises": "Synchronisieren",
 
   "trainingsMode": "Trainingsmodus",
   "enterCodeHint": "Gib deinen Code ein...",
