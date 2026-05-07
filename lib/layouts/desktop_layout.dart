@@ -15,6 +15,7 @@
 import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/pages/settings_page.dart';
 import 'package:code_judge/ui_elements/my_infomation_right_sheet.dart';
+import 'package:code_judge/utils/api_connector.dart';
 import 'package:code_judge/utils/global_variables.dart';
 import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_list_items.dart';
@@ -118,6 +119,15 @@ class ExercisePage extends StatelessWidget{
             )
           ),
         ],
+      ),
+      // Button to sync with the server
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(Icons.sync_outlined),
+        label: Text(appLocalizations.syncExercises), // "Synchronise"
+        onPressed: (){
+          // Update the list of exercises
+          ApiConnector().receiveExercises(context);
+        }
       ),
     );
   }

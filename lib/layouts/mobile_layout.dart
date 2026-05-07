@@ -15,6 +15,7 @@
 import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/pages/settings_page.dart';
 import 'package:code_judge/ui_elements/my_infomation_right_sheet.dart';
+import 'package:code_judge/utils/api_connector.dart';
 import 'package:code_judge/utils/global_variables.dart';
 import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_button_menu.dart';
@@ -111,12 +112,15 @@ class ExercisePage extends StatelessWidget{
       // Button in the lower right corner
       floatingActionButton: CodeJudgeButtonMenu(
         show: context.read<ExerciseProvider>().showSelectionBar,
-        icon: Icons.hourglass_empty_outlined,
-        label: "Empty",
+        icon: Icons.sync_outlined,
+        label: appLocalizations.syncExercises, // "Synchronise"
         onDeselectPressed: () => context.read<ExerciseProvider>().unselectAllExercises(), // Unselect all selected exercises
         onUploadPressed: () {}, // TODO
         onDeletePressed: () {}, // TODO
-        onButtonPressed: () {} // TODO
+        onButtonPressed: () {
+          // Sync the exercises
+          ApiConnector().receiveExercises(context);
+        },
       ),
     );
   }
