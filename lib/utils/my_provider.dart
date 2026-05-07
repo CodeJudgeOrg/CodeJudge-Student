@@ -56,6 +56,12 @@ class ExerciseProvider extends ChangeNotifier {
 
     return selected;
   }
+
+  // Update the list of exercises
+  void updateExercises(List<ExerciseDatamodel> newExercises) {
+    exercises..clear()..addAll(newExercises);
+    notifyListeners();
+  }
 }
 
 // Store a list of submissions
