@@ -141,7 +141,7 @@ class _TrainingsModeState extends State<TrainingsMode> {
                         });
                       // Else open a Dialog an tell the user about it's result
                       } else {
-                        MyAlertDialog().showTrainingSuccessfullDialog(context, int.parse(resultByJudger.trimLeft()));
+                        MyAlertDialog().showTrainingSuccessfullDialog(context, int.parse(resultByJudger.trimLeft()), widget.exercise, resultByJudger, userCode ?? "ERROR: Couldn't receive the code");
                       }
                     }
                   },
