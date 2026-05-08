@@ -107,7 +107,7 @@ class ExercisePage extends StatelessWidget{
                       }
 
                       // Open an overlay showing further informations
-                      OpenMyRightSheet.openMyRightSheet(context, items[index].name, items[index].description, items[index].task, items[index].hint, items[index].solution, 500);
+                      OpenMyRightSheet.openMyRightSheet(context, items[index], 400);
                     },
                     onLongPress: (details) {
                       // Mark this exercise as selected
