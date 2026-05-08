@@ -14,15 +14,17 @@
 
 import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/main.dart';
+import 'package:code_judge/utils/my_provider.dart';
+import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyAlertDialog {
   // Dialog showing the results
-  void showTrainingSuccessfullDialog(BuildContext context, int score){
+  void showTrainingSuccessfullDialog(BuildContext context, int score, ExerciseDatamodel exercise, String output, String code){
     final appLocalizations = AppLocalizations.of(context)!;
     showDialog(
       context: context,
-      barrierDismissible: score == 100 ? false : true,
       builder: (context) {
         return AlertDialog(
           title: Text(appLocalizations.alertSuccess), // Congratulations!
@@ -38,12 +40,29 @@ class MyAlertDialog {
             ],
           ),
           actions: [
+            // Button to close with submission
+            TextButton(
+              child: Text("TODO"),
+              onPressed: (){
+                // TODO: Submit the solution
+                // TODO: Move the exercise to the submission Page
+                context.read<SubmissionProvider>().addSubmission(SubmissionDatamodel(
+                  exerciseName: exercise.name,
+                  task: exercise.task,
+                  code: code,
+                  output: output,
+                  studentName: "studentName" // TODO: Use the real one!
+                ));
+
+                // Navigate home
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageLayoutHandler()));
+              },
+            ),
+            // Button to close the dialog
             TextButton(
               child: Text(appLocalizations.alertClose), // Close
               onPressed: () {
                 Navigator.pop(context);
-                // Return home
-                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageLayoutHandler()));
               },
             ),
           ],
