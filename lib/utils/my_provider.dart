@@ -1,11 +1,10 @@
-import 'package:code_judge/utils/my_exercises.dart';
 import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Store a list of shared exercises
 class ExerciseProvider extends ChangeNotifier {
-  List<ExerciseDatamodel> exercises = MyExercises().getAllExercises();
+  List<ExerciseDatamodel> exercises = [];
   bool showSelectionBar = false;
 
   void addExercises (List<ExerciseDatamodel> newExercises) {
