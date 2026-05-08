@@ -14,11 +14,12 @@
 
 import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/pages/trainings_mode.dart';
+import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
 
 class OpenMyRightSheet {
   // Open the RightSheet and fill it with the correct content
-  static void openMyRightSheet(BuildContext context, String exerciseName, String description, String task, String hint, String solution, double width){
+  static void openMyRightSheet(BuildContext context, ExerciseDatamodel exercise, double width){
     final appLocalizations = AppLocalizations.of(context)!;
 
     MyRightSheet().showRightSheet(
@@ -43,14 +44,14 @@ class OpenMyRightSheet {
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.all(16),
-                              child: Text(appLocalizations.rightSheetDetails + exerciseName), // Details
+                              child: Text(appLocalizations.rightSheetDetails + exercise.name), // Details
                             ),
                           ),
                         ],
                       ),
                     ),
                     Expanded(
-                      child: Text(description),
+                      child: Text(exercise.description),
                     ),
                   ],
                 ),
@@ -67,7 +68,7 @@ class OpenMyRightSheet {
                 label: Text(appLocalizations.rightSheetStart), // Start
                 onPressed: () {
                   // Start the training
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => TrainingsMode(task: task, hint: hint, solution: solution)));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => TrainingsMode(exercise: exercise,)));
                 },
               ),
             ),
