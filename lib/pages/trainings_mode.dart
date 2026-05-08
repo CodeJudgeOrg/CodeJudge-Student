@@ -18,19 +18,16 @@ import 'package:code_judge/ui_elements/my_alert_dialog.dart';
 import 'package:code_judge/utils/my_provider.dart';
 import 'package:code_judge_library/code_judge_edit_text.dart';
 import 'package:code_judge_library/code_judge_task_box.dart';
+import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TrainingsMode extends StatefulWidget{
-  final String task;
-  final String solution;
-  final String hint;
+  final ExerciseDatamodel exercise;
   
   const TrainingsMode({
     super.key,
-    required this.task,
-    required this.solution,
-    required this.hint,
+    required this.exercise,
   });
 
   @override
@@ -72,14 +69,14 @@ class _TrainingsModeState extends State<TrainingsMode> {
         children: [
           // Display the task and the button for the hint
           CodeJudgeTaskBox(
-            task: widget.task,
+            task: widget.exercise.task,
             showButton: true, // Display the button and apply its attributes
             buttonIcon: Icons.lightbulb_outline,
             onButtonPressed: () {
               MyAlertDialog().showHintDialog(
                 context,
                 appLocalizations.dialogHint, // Hint
-                widget.hint,
+                widget.exercise.hint,
                 appLocalizations.alertClose, // Close
               );
             },
@@ -135,7 +132,7 @@ class _TrainingsModeState extends State<TrainingsMode> {
                   onPressed: () {
                     if (userCode != null) {
                       // Call library and check it's result
-                      String resultByJudger = judgerLib.callJudger(userCode!, programmingLanguage, widget.solution);
+                      String resultByJudger = judgerLib.callJudger(userCode!, programmingLanguage, widget.exercise.solution);
 
                       // If the result is an error message display it in the lower left Text()
                       if (resultByJudger.startsWith("ERROR:")) {
