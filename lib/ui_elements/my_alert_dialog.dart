@@ -14,10 +14,9 @@
 
 import 'package:code_judge/l10n/app_localizations.dart';
 import 'package:code_judge/main.dart';
-import 'package:code_judge/utils/my_provider.dart';
+import 'package:code_judge/utils/api_connector.dart';
 import 'package:code_judge_library/datamodels.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class MyAlertDialog {
   // Dialog showing the results
@@ -44,14 +43,13 @@ class MyAlertDialog {
             TextButton(
               child: Text("TODO"),
               onPressed: (){
-                // TODO: Submit the solution
-                // TODO: Move the exercise to the submission Page
-                context.read<SubmissionProvider>().addSubmission(SubmissionDatamodel(
+                // Submit the solution
+                ApiConnector().uploadSubmission(context, SubmissionDatamodel(
                   exerciseName: exercise.name,
                   task: exercise.task,
                   code: code,
                   output: output,
-                  studentName: "studentName" // TODO: Use the real one!
+                  studentName: "studentName" // TODO: Use the real one
                 ));
 
                 // Navigate home
