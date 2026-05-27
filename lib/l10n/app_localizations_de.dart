@@ -27,6 +27,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get done => 'Fertig';
 
   @override
+  String get closeAndSubmit => 'Schließen & Abgeben';
+
+  @override
   String get alertSuccess => 'Glückwunsch!';
 
   @override

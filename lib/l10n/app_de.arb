@@ -8,6 +8,7 @@
   "trainingsMode": "Trainingsmodus",
   "enterCodeHint": "Gib deinen Code ein...",
   "done": "Fertig",
+  "closeAndSubmit": "Schließen & Abgeben",
   "alertSuccess": "Glückwunsch!",
   "alertClose": "Schließen",
   "alertScore": "Deine Punkte: ",

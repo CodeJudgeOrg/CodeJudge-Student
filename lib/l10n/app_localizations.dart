@@ -131,6 +131,12 @@ abstract class AppLocalizations {
   /// **'Done'**
   String get done;
 
+  /// No description provided for @closeAndSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Clode & Submit'**
+  String get closeAndSubmit;
+
   /// No description provided for @alertSuccess.
   ///
   /// In en, this message translates to:
