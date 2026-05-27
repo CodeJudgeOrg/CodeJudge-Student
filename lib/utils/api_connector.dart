@@ -29,7 +29,8 @@ class ApiConnector {
         description: item["description"],
         task: item["task"],
         solution: item["solution"],
-        difficultyLevel: item["difficulty"]
+        difficultyLevel: item["difficulty"],
+        hint: item["hint"] ?? "",
       );
     }).toList();
 
