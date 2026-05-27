@@ -41,7 +41,7 @@ class MyAlertDialog {
           actions: [
             // Button to close with submission
             TextButton(
-              child: Text("TODO"),
+              child: Text(appLocalizations.closeAndSubmit), // "Close & submit"
               onPressed: (){
                 // Submit the solution
                 ApiConnector().uploadSubmission(context, SubmissionDatamodel(
