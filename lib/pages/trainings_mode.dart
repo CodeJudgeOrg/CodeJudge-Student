@@ -83,7 +83,7 @@ class _TrainingsModeState extends State<TrainingsMode> {
             child: CodeJudgeEditText( // Display a TextField
               hint: appLocalizations.enterCodeHint, // Enter your code...
               onInputDone: (value) {
-                userCode = value.trim();
+                userCode = value;
               },
             ),
           ),
